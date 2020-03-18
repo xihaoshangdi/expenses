@@ -1,17 +1,13 @@
 <template>
     <div>
-        <div>money</div>
-        <Nav></Nav>
+        <div>404</div>
+        <router-link to="/">返回首页</router-link>
     </div>
-
-
 </template>
 
 <script lang="ts">
-  import Nav from '@/components/Nav.vue';
   export default {
-    name: "money",
-    components: {Nav}
+    name: "NotFound"
   };
 </script>
 

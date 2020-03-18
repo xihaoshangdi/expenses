@@ -1,10 +1,16 @@
 <template>
-    <div>labels</div>
+    <div>
+        <div>labels</div>
+        <Nav></Nav>
+    </div>
+
 </template>
 
 <script lang="ts">
+  import Nav from '@/components/Nav.vue';
   export default {
-    name: "labels"
+    name: "labels",
+    components: {Nav}
   };
 </script>
 
