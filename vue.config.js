@@ -11,7 +11,11 @@ module.exports = {
             .options({
                 symbolId: "[name]",
                 include: ["./src/assets/icons"]
-            });
+            })
+            .end()
+            .use('svgo-loader')
+            .loader('svgo-loader')
+            .end();
     }
 };
 
