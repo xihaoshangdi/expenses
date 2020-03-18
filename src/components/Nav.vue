@@ -1,14 +1,14 @@
 <template>
     <nav>
-        <router-link to="/money" class="item">
+        <router-link to="/money" class="item" active-class="selected">
            <Icon name="money" />
             money
         </router-link>
-        <router-link to="/labels" class="item">
+        <router-link to="/labels" class="item" active-class="selected">
             <Icon name="labels" />
             labels
         </router-link>
-        <router-link to="/statistics" class="item">
+        <router-link to="/statistics" class="item" active-class="selected">
             <Icon name="statistics" />
             statistics
         </router-link>
@@ -51,6 +51,9 @@
                 width: 21px;
                 height: 21px;
             }
+        }
+        > .item.selected{
+          color: #FF0000;
         }
     }
 
