@@ -1,19 +1,12 @@
 <template>
-    <div>
-        <div>labels</div>
-        <Nav></Nav>
-    </div>
-
+    <Layout>
+        labels
+    </Layout>
 </template>
 
 <script lang="ts">
-  import Nav from '@/components/Nav.vue';
+
   export default {
     name: "labels",
-    components: {Nav}
   };
 </script>
-
-<style lang="scss" scoped>
-
-</style>
