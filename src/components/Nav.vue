@@ -1,23 +1,17 @@
 <template>
     <div>
         <router-link to="/money">
-            <svg>
-                <use xlink:href="#money"/>
-            </svg>
+           <Icon name="money" />
             money
         </router-link>
         |
         <router-link to="/labels">
-            <svg>
-                <use xlink:href="#labels"/>
-            </svg>
+            <Icon name="labels" />
             labels
         </router-link>
         |
         <router-link to="/statistics">
-            <svg>
-                <use xlink:href="#statistics"/>
-            </svg>
+            <Icon name="statistics" />
             statistics
         </router-link>
         |
@@ -25,9 +19,9 @@
 </template>
 
 <script lang="ts">
-  const requireAll = (requireContext: __WebpackModuleApi.RequireContext) => requireContext.keys().map(requireContext);
+  const requireAll = (requireContext: __WebpackModuleApi.RequireContext) => requireContext.keys().forEach(requireContext);
   try {
-    requireAll(require.context("../assets/icons", false, /\.svg$/));
+    requireAll(require.context("@/assets/icons", false, /\.svg$/));
   } catch (e) {
     console.log(e);
   }
