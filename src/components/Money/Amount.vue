@@ -13,14 +13,7 @@
   import {Component} from "vue-property-decorator";
   @Component
   export default class Amount extends Vue {
-    type = '+';
-    changeType(type: string) {
-      if (type !== '-' && type !== '+') {
-        throw new Error('type error')
-      } else {
-        this.type = type;
-      }
-    }
+
   }
 </script>
 

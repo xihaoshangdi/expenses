@@ -11,16 +11,19 @@
             <button>7</button>
             <button>8</button>
             <button>9</button>
-            <button class="ok">OK</button>
+            <button class="ok" @click="sendMsg">OK</button>
             <button class="zero">0</button>
             <button>.</button>
         </div>
 </template>
 
 <script lang="ts">
-  export default {
-    name: "Numberpad"
-  };
+  import Vue from 'vue';
+  import {Component} from "vue-property-decorator";
+  @Component
+  export default class Amount extends Vue {
+
+  }
 </script>
 
 <style lang="scss" scoped>
