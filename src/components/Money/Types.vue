@@ -1,14 +1,25 @@
 <template>
     <ul class="types">
-        <li class="selected">支出</li>
-        <li>收入</li>
+        <li :class="type==='-'&&'selected'" @click="changeType('-')">支出</li>
+        <li :class="type==='+'&&'selected'" @click="changeType('+')">收入</li>
     </ul>
 </template>
 
 <script lang="ts">
-  export default {
-    name: "Types"
-  };
+    import Vue from 'vue';
+    import {Component} from "vue-property-decorator";
+
+    @Component
+    export default class Types extends Vue {
+      type = '+';
+      changeType(type: string) {
+        if (type !== '-' && type !== '+') {
+          throw new Error('type error')
+        } else {
+          this.type = type;
+        }
+      }
+    }
 </script>
 
 <style lang="scss" scoped>
@@ -18,7 +29,6 @@
         display: flex;
         text-align: center;
         font-size: 24px;
-
         > li {
             flex-grow: 1;
             height: 64px;
@@ -26,7 +36,6 @@
             justify-content: center;
             align-items: center;
             position: relative;
-
             &.selected::after {
                 content: '';
                 position: absolute;
