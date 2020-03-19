@@ -1,7 +1,9 @@
 <template>
     <Layout class-prefix="layout">
         <Amount/>
-        <Information/>
+        <Title/>
+        <Tags :data-source="Labels"/>
+        <Date/>
         <Notes/>
         <Types/>
         <Numberpad/>
@@ -11,14 +13,21 @@
 <script lang="ts">
 
   import Amount from "@/components/Money/Amount.vue";
-  import Information from "@/components/Money/Information.vue";
   import Types from '@/components/Money/Types.vue';
   import Numberpad from '@/components/Money/Numberpad.vue';
   import Notes from '@/components/Money/Notes.vue';
+  import Title from '@/components/Money/Title.vue';
+  import Tags from '@/components/Money/Tags.vue';
+  import Date from '@/components/Money/Date.vue';
 
   export default {
     name: "money",
-    components: {Notes, Numberpad, Types, Information, Amount},
+    components: {Date, Tags, Title, Notes, Numberpad, Types, Amount},
+    data(){
+      return{
+        Labels:['1','2','3','吃']
+      }
+    }
 
   };
 </script>
