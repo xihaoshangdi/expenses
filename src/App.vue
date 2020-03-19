@@ -7,21 +7,19 @@
 </template>
 
 <style lang="scss">
-  *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+  @import "~@/assets/styles/reset.scss";
+  @import "~@/assets/styles/global.scss";
   body{
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: $font-color;
+    font-family: $font-hei;
+    font-size: 16px;
     line-height: 1.5;
-    min-width: 300px;
-    overflow: hidden;
   }
-  a{
-    text-decoration: none;
-    color: inherit;
-  }
+
 </style>
+
 <script>
 
   export default {

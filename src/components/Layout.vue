@@ -1,28 +1,36 @@
 <template>
-    <div class="nav-box">
-        <div class="nav-content">
+    <div class="nav-box" :class="classPrefix && `${classPrefix}-wrapper`">
+        <div class="nav-content" :class="classPrefix && `${classPrefix}-content`   ">
             <slot></slot>
         </div>
-        <Nav></Nav>
+        <Nav/>
     </div>
 </template>
 
+
 <script lang="ts">
-  import Nav from '@/components/Nav.vue';
+  import Nav from "@/components/Nav.vue";
+
   export default {
     name: "Layout",
+    props: ["classPrefix"],
     components: {Nav}
   };
 </script>
 
+
+
 <style lang="scss" scoped>
-    .nav-box{
+    @import "~@/assets/styles/global.scss";
+
+    .nav-box {
         display: flex;
         flex-direction: column;
         height: 100vh;
-    }
-    .nav-content{
 
+    }
+
+    .nav-content {
         flex-grow: 1;
     }
 </style>
