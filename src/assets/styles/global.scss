@@ -11,10 +11,27 @@ $font-color:#344A5F;
 //Money amount color
 $rgba:rgba(0,0,0,0.1);
 $white-rgba:rgba(255,255,255,0.8);
+$tag-choose-bg:#45A1FF;
+$tag-choose-color:rgba(255,255,255,0.8);
 $blue:#007EE5;
 $white:#ecfbfc;
 $gray:#323232;
 $number-pad:#c4c4c4;
+//Test border
+$t:1px solid red;
+$g:1px solid black;
+//Money Information
+%informationBox{
+  border: $t;
+  padding: 20px 10vw 20px 10vw;
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100vw;
+}
+
+
 //
 %clearFix {
   &::after {
@@ -32,9 +49,6 @@ $color-shadow: rgba(0, 0, 0, 0.3);
   inset 0 3px 3px -3px $color-shadow;
 }
 
-//Test border
-$t:1px solid red;
-$g:1px solid black
 
 
 

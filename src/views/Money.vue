@@ -19,6 +19,7 @@
   export default {
     name: "money",
     components: {Notes, Numberpad, Types, Information, Amount},
+
   };
 </script>
 

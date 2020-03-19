@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="box">
         <Icon name="title" class-prefix="information"></Icon>
         <label>
             <input placeholder="标题"/>
@@ -16,6 +16,9 @@
 
 <style lang="scss" scoped>
     @import "~@/assets/styles/global.scss";
+    .box{
+        @extend %informationBox
+    }
          label {
             margin-left: 15px;
             font-size: 20px;

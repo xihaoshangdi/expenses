@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="box">
         <Icon name="date" class-prefix="information"></Icon>
         <div class="date">日期组件</div>
     </div>
@@ -13,6 +13,9 @@
 
 <style lang="scss" scoped>
     @import "~@/assets/styles/global.scss";
+    .box{
+        @extend %informationBox
+    }
     .date {
         width: 80vw;
         margin-left: 15px;
