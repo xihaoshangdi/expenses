@@ -1,15 +1,15 @@
 <template>
     <nav>
         <router-link to="/money" class="item" active-class="selected">
-           <Icon name="money" />
+           <Icon name="money" class-prefix="nav" />
             money
         </router-link>
         <router-link to="/labels" class="item" active-class="selected">
-            <Icon name="labels" />
+            <Icon name="labels" class-prefix="nav" />
             labels
         </router-link>
         <router-link to="/statistics" class="item" active-class="selected">
-            <Icon name="statistics" />
+            <Icon name="statistics" class-prefix="nav" />
             statistics
         </router-link>
     </nav>
@@ -38,7 +38,6 @@
         box-shadow: 0 0 3px rgba(0,0,0,0.25);
         font-size: 14px;
         max-height: 56px;
-
         > .item{
             flex-grow:1;
             display: flex;
@@ -46,11 +45,6 @@
             align-items: center;
             justify-content: center;
             padding: 4px 0 4px 0  ;
-
-            > .icon{
-                width: 21px;
-                height: 21px;
-            }
         }
         > .item.selected{
           color: #FF0000;
