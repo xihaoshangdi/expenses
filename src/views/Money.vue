@@ -57,7 +57,7 @@
     }
 
     onPadsUpdate(value: string) {
-      console.log(value);
+      this.money=value;
     }
   }
 </script>
