@@ -1,6 +1,6 @@
 <template>
     <div class="amount-area">
-        <span>人民币↓{{dataMoney}}</span>
+        <span>人民币↓</span>
         <label>
             <input :value="dataMoney" @change="onValueChanged" placeholder="金额"/>
         </label>
@@ -10,11 +10,10 @@
 <script lang="ts">
 
   import Vue from 'vue';
-  import {Component, Prop, Watch} from "vue-property-decorator";
+  import {Component, Prop} from "vue-property-decorator";
   @Component
   export default class Amount extends Vue {
     @Prop(String) dataMoney: string | undefined ;
-    @Watch('value', { immediate: false})
     onValueChanged(event: { target: HTMLInputElement}) {
       this.$emit('update:data-money',event.target.value);
     }
