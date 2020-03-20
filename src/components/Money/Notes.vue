@@ -5,6 +5,8 @@
             <input type="text"
                    :value="dataNotes"
                    @change="onValueChanged"
+                   @focus="onFocus"
+                   @blur="onBlur"
                    placeholder="在这里输入备注">
         </label>
     </div>
@@ -19,6 +21,12 @@
     onValueChanged(event: { target: HTMLInputElement }) {
       this.$emit("update:data-notes", event.target.value);
     }
+    onFocus(){
+      this.$emit('pad-show',false);
+    }
+    onBlur(){
+        this.$emit('pad-show',true);
+    }
   }
 </script>
 
@@ -27,6 +35,7 @@
     .note{
         border: $t;
         flex-grow: 1;
+        background-color:#f5f5f5;
     }
     .notes {
         font-size: 14px;

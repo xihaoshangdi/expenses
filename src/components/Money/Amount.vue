@@ -7,7 +7,6 @@
                     :value="dataMoney"
                     @change="onValueChanged"
                     @focus="onLostFocus"
-                    @paste="onPaste"
                     placeholder="金额"/>
         </label>
     </div>

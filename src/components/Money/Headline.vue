@@ -2,7 +2,12 @@
     <div class="box">
         <Icon name="title" class-prefix="information"></Icon>
         <label>
-            <input :value="dataTitle" @change="onValueChanged" placeholder="标题"/>
+            <input
+                    @focus="onFocus"
+                    @blur="onBlur"
+                    @change="onValueChanged"
+                    :value="dataTitle"
+                    placeholder="标题"/>
         </label>
     </div>
 </template>
@@ -17,13 +22,13 @@
     onValueChanged(event: { target: HTMLInputElement }) {
       this.$emit('update:data-title', event.target.value);
     }
+    onFocus(){
+      this.$emit('pad-show',false);
+    }
+    onBlur(){
+      this.$emit('pad-show',true);
+    }
   }
-  //   title='';
-  //   @Watch('title', { immediate: false})
-  //   onValueChanged(val: string[]) {
-  //     this.$emit('update:value',val)
-  //   }
-  // }
 </script>
 
 <style lang="scss" scoped>

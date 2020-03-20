@@ -1,18 +1,24 @@
 <template>
     <Layout class-prefix="layout">
+        {{padShow}}
         <Amount :data-money.sync="record.amount"/>
-        <Headline :data-title.sync="record.headline"/>
+        <Headline
+                :data-title.sync="record.headline"
+                @pad-show="padShowUpdate"
+        />
         <Tags :data-source.sync="labels" :data-tags.sync="record.tags"/>
         <Date/>
-        <Notes :data-notes.sync="record.notes"/>
-        <Types :data-type.sync="record.type"/>
-        <Numberpad @update:save="onRecordSave" @update:value="onPadsUpdate"/>
-        {{record}}
+        <Notes :data-notes.sync="record.notes" @pad-show="padShowUpdate"/>
+        <transition name="fade">
+            <Types v-if="padShow" :data-type.sync="record.type"/>
+        </transition>
+        <transition name="fade">
+            <Numberpad v-if="padShow" @update:save="onRecordSave" @update:value="onPadsUpdate"/>
+        </transition>
     </Layout>
 </template>
 
 <script lang="ts">
-
   import Amount from "@/components/Money/Amount.vue";
   import Types from "@/components/Money/Types.vue";
   import Numberpad from "@/components/Money/Numberpad.vue";
@@ -37,8 +43,9 @@
     }
   })
   export default class Money extends Vue {
-    records: Record[]=JSON.parse(localStorage.getItem('records')||'[]');
+    records: Record[] = JSON.parse(localStorage.getItem("records") || "[]");
     labels = ["1", "2", "3", "4"];
+    padShow = true;
     record: Record = {
       amount: "",
       headline: "",
@@ -49,12 +56,18 @@
 
     };
 
+    padShowUpdate(value: boolean) {
+      //函数防抖
+      this.padShow=value;
+    }
+
     onPadsUpdate(value: string) {
       this.record.amount = value;
     }
-    onRecordSave(){
+
+    onRecordSave() {
       this.records.push(JSON.parse(JSON.stringify(this.record)));
-      window.localStorage.setItem('recordList',JSON.stringify(this.records));
+      window.localStorage.setItem("recordList", JSON.stringify(this.records));
       console.log(this.records);
     }
   }
@@ -67,6 +80,18 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+    }
+
+    .fade-enter-active {
+        transition: all 1.5s;
+    }
+
+    .fade-enter {
+        opacity: 0;
+    }
+
+    .fade-leave-to {
+        opacity: 1;
     }
 </style>
 
