@@ -1,24 +1,29 @@
 <template>
     <div class="box">
-        <Icon name="title" class-prefix="information"></Icon>
+        <Icon name="title"></Icon>
         <label>
-            <input v-model="title" placeholder="标题"/>
+            <input :value="dataTitle" @change="onValueChanged" placeholder="标题"/>
         </label>
     </div>
 </template>
 
 <script lang="ts">
   import Vue from 'vue';
-  import {Component, Prop,Watch} from "vue-property-decorator";
+  import {Component, Prop} from "vue-property-decorator";
   @Component
   export default class Headline extends Vue {
-    title='';
-    @Prop(String) classPrefix: string | undefined;
-    @Watch('title', { immediate: false})
-    onValueChanged(val: string[]) {
-      this.$emit('update:value',val)
+    @Prop(String) readonly dataTitle: string | undefined;
+
+    onValueChanged(event: { target: HTMLInputElement }) {
+      this.$emit('update:data-title', event.target.value);
     }
   }
+  //   title='';
+  //   @Watch('title', { immediate: false})
+  //   onValueChanged(val: string[]) {
+  //     this.$emit('update:value',val)
+  //   }
+  // }
 </script>
 
 <style lang="scss" scoped>

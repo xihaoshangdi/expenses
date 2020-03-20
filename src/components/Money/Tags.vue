@@ -6,7 +6,7 @@
                     v-for="item of dataSource"
                     :key="item"
                     @click="toggle(item)"
-                    :class="{'selected':selectedTags.indexOf(item)>=0}"
+                    :class="{'selected':dataTags.indexOf(item)>=0}"
             >{{item}}
             </li>
         </ul>
@@ -16,26 +16,24 @@
 
 <script lang="ts">
   import Vue from "vue";
-  import {Component, Prop, Watch} from "vue-property-decorator";
+  import {Component, Prop} from "vue-property-decorator";
 
   @Component
   export default class Tags extends Vue {
-    selectedTags: string[] = [];
-    @Prop(Array) dataSource: string[] | undefined;
+    @Prop(Array) readonly dataSource!: string[];
+    @Prop(Array) readonly dataTags!: string[];
 
-    @Watch("selectedTags", {immediate: false})
-    onTagChanged(val: string[]) {
-      this.$emit("update:value", val);
-    }
+    tagList: string[] = this.dataTags;
 
     toggle(tag: string) {
-      const index = this.selectedTags.indexOf(tag);
+      const index = this.dataTags.indexOf(tag);
       if (index < 0) {
-        this.selectedTags.push(tag);
+        this.tagList.push(tag);
       } else {
-        this.selectedTags.splice(index, 1);
+        this.tagList.splice(index, 1);
       }
       // this.$emit('xxx',this.selectedTags);
+      this.$emit("data-tags", this.tagList);
     }
 
     create() {

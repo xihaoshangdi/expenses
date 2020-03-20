@@ -1,11 +1,13 @@
 <template>
     <Layout class-prefix="layout">
-        <Amount :data-money.sync="money"/>
-        <Headline @update:value="onTitleUpdate"/>
-        <Tags :data-source.sync="labels" @update:value="onTagUpdate"/>
+        {{record}}
+        {{labels}}
+        <Amount :data-money.sync="record.amount"/>
+        <Headline :data-title.sync="record.headline"/>
+        <Tags :data-source.sync="labels" :data-tags.sync="record.tags"/>
         <Date/>
-        <Notes @update:value="onNotesUpdate"/>
-        <Types @update:value="onTypeUpdate"/>
+        <Notes :data-notes.sync="record.notes"/>
+        <Types :data-type.sync="record.type"/>
         <Numberpad @update:value="onPadsUpdate"/>
     </Layout>
 </template>
@@ -19,45 +21,36 @@
   import Headline from "@/components/Money/Headline.vue";
   import Tags from "@/components/Money/Tags.vue";
   import Date from "@/components/Money/Date.vue";
-
   import Vue from "vue";
-  import {Component, Watch} from "vue-property-decorator";
+  import {Component} from "vue-property-decorator";
 
+  type Record = {
+    amount: string;
+    headline: string;
+    tags: string[];
+    date: string;
+    notes: string;
+    type: string;
+  }
   @Component({
     components: {
       Amount, Types, Numberpad, Notes, Headline, Tags, Date
     }
   })
   export default class Money extends Vue {
-    money = "";
     labels = ["1", "2", "3", "4"];
-    selectedLabels: string[] = [];
+    record: Record = {
+      amount: "100",
+      headline: "这是标题",
+      tags: ["1"],
+      date: "",
+      notes: "000",
+      type: "-",
 
-    //
-    @Watch("money", {immediate: true})
-    onValueChanged() {
-      console.log("money:       " + this.money);
-    }
-
-    onTagUpdate(value: string[]) {
-      this.selectedLabels = value;
-      console.log(this.selectedLabels.toString());
-    }
-
-    onNotesUpdate(value: string) {
-      console.log(value);
-    }
-
-    onTypeUpdate(value: string) {
-      console.log(value);
-    }
-
-    onTitleUpdate(value: string) {
-      console.log(value);
-    }
+    };
 
     onPadsUpdate(value: string) {
-      this.money=value;
+      this.record.amount = value;
     }
   }
 </script>
