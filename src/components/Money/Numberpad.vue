@@ -53,7 +53,8 @@
     }
 
     ok() {
-      console.log("ok");
+      this.$emit('update:save');
+      this.output = '';
     }
   }
 </script>

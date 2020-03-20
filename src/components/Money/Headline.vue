@@ -1,6 +1,6 @@
 <template>
     <div class="box">
-        <Icon name="title"></Icon>
+        <Icon name="title" class-prefix="information"></Icon>
         <label>
             <input :value="dataTitle" @change="onValueChanged" placeholder="标题"/>
         </label>

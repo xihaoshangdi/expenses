@@ -2,7 +2,12 @@
     <div class="amount-area">
         <span>人民币↓</span>
         <label>
-            <input :key="random" :value="dataMoney" @change="onValueChanged" placeholder="金额"/>
+            <input
+                    :key="random"
+                    :value="dataMoney"
+                    @change="onValueChanged"
+                    @focus="onLostFocus"
+                    placeholder="金额"/>
         </label>
     </div>
 </template>
@@ -15,14 +20,19 @@
   @Component
   export default class Amount extends Vue {
     @Prop(String) readonly dataMoney: string | undefined;
-    random=0;
+    random = 0;
+    onLostFocus(){
+      document.activeElement.blur();
+
+    }
+
     onValueChanged(event: { target: HTMLInputElement }) {
-      const value: number=parseFloat(event.target.value);
-      if (isNaN(value)){
-        alert('进行了不合法的输入');
-        this.random=Math.random()
-      }else{
-        this.$emit("update:data-money",value.toString());
+      const value: number = parseFloat(event.target.value);
+      if (isNaN(value)) {
+        alert("进行了不合法的输入");
+        this.random = Math.random();
+      } else {
+        this.$emit("update:data-money", value.toString());
       }
 
     }

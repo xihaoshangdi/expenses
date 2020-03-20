@@ -1,14 +1,13 @@
 <template>
     <Layout class-prefix="layout">
-        {{record}}
-        {{labels}}
         <Amount :data-money.sync="record.amount"/>
         <Headline :data-title.sync="record.headline"/>
         <Tags :data-source.sync="labels" :data-tags.sync="record.tags"/>
         <Date/>
         <Notes :data-notes.sync="record.notes"/>
         <Types :data-type.sync="record.type"/>
-        <Numberpad @update:value="onPadsUpdate"/>
+        <Numberpad @update:save="onRecordSave" @update:value="onPadsUpdate"/>
+<!--        {{record}}-->
     </Layout>
 </template>
 
@@ -38,19 +37,25 @@
     }
   })
   export default class Money extends Vue {
+    records: Record[]=JSON.parse(localStorage.getItem('records')||'[]');
     labels = ["1", "2", "3", "4"];
     record: Record = {
-      amount: "100",
-      headline: "这是标题",
-      tags: ["1"],
+      amount: "",
+      headline: "",
+      tags: [],
       date: "",
-      notes: "000",
+      notes: "",
       type: "-",
 
     };
 
     onPadsUpdate(value: string) {
       this.record.amount = value;
+    }
+    onRecordSave(){
+      this.records.push(JSON.parse(JSON.stringify(this.record)));
+      window.localStorage.setItem('recordList',JSON.stringify(this.records));
+      console.log(this.records);
     }
   }
 </script>
