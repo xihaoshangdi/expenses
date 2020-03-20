@@ -9,26 +9,32 @@
                     :class="{'selected':selectedTags.indexOf(item)>=0}"
             >{{item}}</li>
         </ul>
-        <button class="tagBtn" @click="create">点击生效</button>
+        <button class="tagBtn" @click="create">添加标签</button>
     </div>
 </template>
 
 <script lang="ts">
   import Vue from 'vue';
-  import {Component, Prop} from "vue-property-decorator";
+  import {Component, Prop,Watch} from "vue-property-decorator";
 
   @Component
   export default class Tags extends Vue {
     @Prop(Array) dataSource: string[]|undefined;
+    @Watch('selectedTags', { immediate: false})
+    onTagChanged(val: string[]) {
+      this.$emit('update:selected',val);
+    }
     selectedTags: string[] = [];
     toggle(tag: string) {
       const index = this.selectedTags.indexOf(tag);
       if (index < 0) {
         this.selectedTags.push(tag);
-        return
+      }else{
+        this.selectedTags.splice(index, 1);
       }
-      this.selectedTags.splice(index, 1);
+      // this.$emit('xxx',this.selectedTags);
     }
+
     create(){
       const name = window.prompt('请输入标签名');
       if (name === '') {

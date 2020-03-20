@@ -23,6 +23,7 @@
   @Component
   export default class Amount extends Vue {
 
+
   }
 </script>
 

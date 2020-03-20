@@ -1,8 +1,8 @@
 <template>
     <Layout class-prefix="layout">
         <Amount/>
-        <Title/>
-        <Tags :data-source="Labels"/>
+        <Headline/>
+        <Tags :data-source="Labels" @update:selected="onTagUpdate"/>
         <Date/>
         <Notes/>
         <Types/>
@@ -16,20 +16,26 @@
   import Types from '@/components/Money/Types.vue';
   import Numberpad from '@/components/Money/Numberpad.vue';
   import Notes from '@/components/Money/Notes.vue';
-  import Title from '@/components/Money/Title.vue';
+  import Headline from '@/components/Money/Headline.vue';
   import Tags from '@/components/Money/Tags.vue';
   import Date from '@/components/Money/Date.vue';
 
-  export default {
-    name: "money",
-    components: {Date, Tags, Title, Notes, Numberpad, Types, Amount},
-    data(){
-      return{
-        Labels:['1','2','3','吃']
-      }
-    }
+  import Vue from 'vue';
+  import {Component} from "vue-property-decorator";
 
-  };
+  @Component({
+    components:{
+      Amount,Types,Numberpad,Notes,Headline,Tags,Date
+    }
+  })
+  export default class Money extends Vue {
+    Labels=['1','2','3','4'];
+    selectedLabels: string[]=[];
+    onTagUpdate(value: string[]){
+      this.selectedLabels=value;
+      console.log(this.selectedLabels.toString());
+    }
+  }
 </script>
 
 <style lang="scss">
