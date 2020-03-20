@@ -1,11 +1,11 @@
 <template>
     <Layout class-prefix="layout">
-        <Amount/>
+        <Amount :data-money.sync="money"/>
         <Headline/>
-        <Tags :data-source="Labels" @update:selected="onTagUpdate"/>
+        <Tags :data-source="labels" @update:value="onTagUpdate"/>
         <Date/>
-        <Notes/>
-        <Types/>
+        <Notes @update:value="onNotesUpdate"/>
+        <Types @update:value="onTypeUpdate"/>
         <Numberpad/>
     </Layout>
 </template>
@@ -29,11 +29,20 @@
     }
   })
   export default class Money extends Vue {
-    Labels=['1','2','3','4'];
+    //
+    money='';
+    labels=['1','2','3','4'];
     selectedLabels: string[]=[];
     onTagUpdate(value: string[]){
       this.selectedLabels=value;
       console.log(this.selectedLabels.toString());
+    }
+    onNotesUpdate(value: string){
+      console.log(value);
+      this.money=value;
+    }
+    onTypeUpdate(value: string){
+      console.log(value);
     }
   }
 </script>

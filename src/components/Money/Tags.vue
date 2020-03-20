@@ -22,7 +22,7 @@
     @Prop(Array) dataSource: string[]|undefined;
     @Watch('selectedTags', { immediate: false})
     onTagChanged(val: string[]) {
-      this.$emit('update:selected',val);
+      this.$emit('update:value',val);
     }
     selectedTags: string[] = [];
     toggle(tag: string) {
