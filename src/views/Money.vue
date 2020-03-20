@@ -7,7 +7,7 @@
         <Notes :data-notes.sync="record.notes"/>
         <Types :data-type.sync="record.type"/>
         <Numberpad @update:save="onRecordSave" @update:value="onPadsUpdate"/>
-<!--        {{record}}-->
+        {{record}}
     </Layout>
 </template>
 

@@ -7,6 +7,7 @@
                     :value="dataMoney"
                     @change="onValueChanged"
                     @focus="onLostFocus"
+                    @paste="onPaste"
                     placeholder="金额"/>
         </label>
     </div>
@@ -22,10 +23,10 @@
     @Prop(String) readonly dataMoney: string | undefined;
     random = 0;
     onLostFocus(){
-      document.activeElement.blur();
-
+      if (document.activeElement instanceof HTMLElement) {
+        document.activeElement.blur();
+      }
     }
-
     onValueChanged(event: { target: HTMLInputElement }) {
       const value: number = parseFloat(event.target.value);
       if (isNaN(value)) {
