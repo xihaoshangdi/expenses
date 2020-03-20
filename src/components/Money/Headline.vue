@@ -2,16 +2,23 @@
     <div class="box">
         <Icon name="title" class-prefix="information"></Icon>
         <label>
-            <input placeholder="标题"/>
+            <input v-model="title" placeholder="标题"/>
         </label>
     </div>
 </template>
 
 <script lang="ts">
-  export default {
-    name: "Title",
-    props: ["classPrefix"],
-  };
+  import Vue from 'vue';
+  import {Component, Prop,Watch} from "vue-property-decorator";
+  @Component
+  export default class Headline extends Vue {
+    title='';
+    @Prop(String) classPrefix: string | undefined;
+    @Watch('title', { immediate: false})
+    onValueChanged(val: string[]) {
+      this.$emit('update:value',val)
+    }
+  }
 </script>
 
 <style lang="scss" scoped>

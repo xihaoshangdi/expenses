@@ -19,12 +19,12 @@
 
   @Component
   export default class Tags extends Vue {
+    selectedTags: string[] = [];
     @Prop(Array) dataSource: string[]|undefined;
     @Watch('selectedTags', { immediate: false})
     onTagChanged(val: string[]) {
       this.$emit('update:value',val);
     }
-    selectedTags: string[] = [];
     toggle(tag: string) {
       const index = this.selectedTags.indexOf(tag);
       if (index < 0) {
@@ -34,15 +34,14 @@
       }
       // this.$emit('xxx',this.selectedTags);
     }
-
     create(){
       const name = window.prompt('请输入标签名');
       if (name === '') {
         window.alert('标签名不能为空');
       } else if (name===null){
         return
-      }
-      else if (this.dataSource) {
+      } else if (this.dataSource) {
+        console.log('here');
         this.$emit('update:dataSource',
           [...this.dataSource, name]);
       }
