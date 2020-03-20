@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="note">
         <label class="notes">
             <span class="name">备注</span>
             <input type="text"
@@ -23,6 +23,11 @@
 </script>
 
 <style lang="scss" scoped>
+    @import "~@/assets/styles/global.scss";
+    .note{
+        border: $t;
+        flex-grow: 1;
+    }
     .notes {
         font-size: 14px;
         background: #f5f5f5;
