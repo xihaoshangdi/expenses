@@ -6,7 +6,7 @@
                 @pad-show="padShowUpdate"
         />
         <Tags :data-source.sync="labels" :data-tags.sync="record.tags"/>
-        <Date/>
+        <Calendar :data-date.sync="record.date"></Calendar>
         <Notes :data-notes.sync="record.notes" @pad-show="padShowUpdate"/>
         <transition name="fade">
             <Types v-if="padShow" :data-type.sync="record.type"/>
@@ -24,43 +24,36 @@
   import Notes from "@/components/Money/Notes.vue";
   import Headline from "@/components/Money/Headline.vue";
   import Tags from "@/components/Money/Tags.vue";
-  import Date from "@/components/Money/Date.vue";
   import Vue from "vue";
   import {Component} from "vue-property-decorator";
+  import Calendar from '@/components/Money/Calendar.vue';
+  import model from "@/model";
 
-  type Record = {
-    amount: string;
-    headline: string;
-    tags: string[];
-    date: string;
-    notes: string;
-    type: string;
-  }
   @Component({
     components: {
-      Amount, Types, Numberpad, Notes, Headline, Tags, Date
+      Calendar,
+      Amount, Types, Numberpad, Notes, Headline, Tags
     }
   })
   export default class Money extends Vue {
-    records: Record[] = JSON.parse(localStorage.getItem("records") || "[]");
-    labels = ["衣", "食", "住", "行"];
-    padShow = true;
+    records=model.extract();
     timer: number | undefined;
-    record: Record = {
+    record: RecordBar = {
       amount: "",
       headline: "",
       tags: [],
-      date: "",
+      date: new Date().toLocaleDateString(),
       notes: "",
       type: "-",
-
     };
+    labels = ["衣", "食", "住", "行"];
+    padShow = true;
 
     padShowUpdate(value: boolean) {
-        if(this.timer) clearTimeout(this.timer);
-        this.timer=setTimeout(()=>{
-          this.padShow=value;
-        },0);
+      if (this.timer) clearTimeout(this.timer);
+      this.timer = setTimeout(() => {
+        this.padShow = value;
+      }, 0);
     }
 
     onPadsUpdate(value: string) {
@@ -68,9 +61,10 @@
     }
 
     onRecordSave() {
-      this.records.push(JSON.parse(JSON.stringify(this.record)));
-      window.localStorage.setItem("recordList", JSON.stringify(this.records));
-      console.log(this.records);
+      this.records.push(model.clone(this.record));
+      model.save(this.records);
+      alert('记账成功');
+      location.reload();
     }
   }
 </script>

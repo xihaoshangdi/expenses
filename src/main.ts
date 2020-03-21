@@ -9,6 +9,10 @@ import Icon from '@/components/Icon.vue';
 Vue.config.productionTip = false;
 Vue.component('Icon', Icon);
 Vue.component('Layout', Layout);
+const vueHashCalendar=require('vue-hash-calendar').default; //ts 引入js 模块
+import 'vue-hash-calendar/lib/vue-hash-calendar.css'
+Vue.use(vueHashCalendar);
+
 
 new Vue({
   router,
