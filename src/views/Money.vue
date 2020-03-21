@@ -5,7 +5,7 @@
                 :data-title.sync="record.headline"
                 @pad-show="padShowUpdate"
         />
-        <Tags :data-source.sync="labels" :data-tags.sync="record.tags"/>
+        <Tags :data-tags.sync="record.tags"/>
         <Calendar :data-date.sync="record.date"></Calendar>
         <Notes :data-notes.sync="record.notes" @pad-show="padShowUpdate"/>
         <transition name="fade">
@@ -28,7 +28,6 @@
   import {Component} from "vue-property-decorator";
   import Calendar from '@/components/Money/Calendar.vue';
   import model from "@/models/model";
-  import labelBar from "@/models/labelModel";
 
   @Component({
     components: {
@@ -47,7 +46,6 @@
       notes: "",
       type: "-",
     };
-    labels =labelBar.extract();
     padShow = true;
 
     padShowUpdate(value: boolean) {

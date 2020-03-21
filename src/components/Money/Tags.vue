@@ -4,13 +4,13 @@
 
         <ul class="tagList">
                 <li
-                        v-for="item of dataSource"
-                        :key="item"
-                        @click="toggle(item)"
-                        :class="{'selected':dataTags.indexOf(item)>=0}"
+                        v-for="label of labels"
+                        :key="label"
+                        @click="toggle(label)"
+                        :class="{'selected':dataTags.indexOf(label)>=0}"
                 >
-                    <span class="icon"><Icon :name='item'/></span>
-                   <span class="item">{{item}}</span>
+                    <span class="icon"><Icon :name='label'/></span>
+                   <span class="item">{{label}}</span>
                 </li>
         </ul>
         <button class="tagBtn" @click="create">Add</button>
@@ -20,11 +20,12 @@
 <script lang="ts">
   import Vue from "vue";
   import {Component, Prop} from "vue-property-decorator";
+  import labelBar from "@/models/labelModel";
 
   @Component
   export default class Tags extends Vue {
-    @Prop(Array) readonly dataSource!: string[];
     @Prop(Array) readonly dataTags!: string[];
+    labels=labelBar.extract();
 
     tagList: string[] = this.dataTags;
 
@@ -35,20 +36,16 @@
       } else {
         this.tagList.splice(index, 1);
       }
-      // this.$emit('xxx',this.selectedTags);
-      this.$emit("data-tags", this.tagList);
+      this.$emit("update:data-tags", this.tagList);
     }
 
     create() {
       const name = window.prompt("请输入标签名");
-      if (name === "") {
+      if (name === "" && name === null) {
         window.alert("标签名不能为空");
-      } else if (name === null) {
-        return;
-      } else if (this.dataSource) {
-        console.log("here");
-        this.$emit("update:dataSource",
-          [...this.dataSource, name]);
+      } else if(name!==null){
+        console.log(name);
+        labelBar.creat(name);
       }
     }
   }
