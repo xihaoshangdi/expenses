@@ -1,6 +1,5 @@
 <template>
     <Layout class-prefix="layout">
-        {{padShow}}
         <Amount :data-money.sync="record.amount"/>
         <Headline
                 :data-title.sync="record.headline"
@@ -44,7 +43,7 @@
   })
   export default class Money extends Vue {
     records: Record[] = JSON.parse(localStorage.getItem("records") || "[]");
-    labels = ["1", "2", "3", "4"];
+    labels = ["衣", "食", "住", "行"];
     padShow = true;
     timer: number | undefined;
     record: Record = {

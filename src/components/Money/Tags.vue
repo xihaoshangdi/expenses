@@ -1,14 +1,18 @@
 <template>
     <div class="box">
         <Icon name="labels" class-prefix="information"></Icon>
+
         <ul class="tagList">
-            <li
-                    v-for="item of dataSource"
-                    :key="item"
-                    @click="toggle(item)"
-                    :class="{'selected':dataTags.indexOf(item)>=0}"
-            >{{item}}
-            </li>
+
+                <li
+                        v-for="item of dataSource"
+                        :key="item"
+                        @click="toggle(item)"
+                        :class="{'selected':dataTags.indexOf(item)>=0}"
+                >
+                    <Icon :name='item'/>
+                    {{item}}
+                </li>
         </ul>
         <button class="tagBtn" @click="create">Add</button>
     </div>
