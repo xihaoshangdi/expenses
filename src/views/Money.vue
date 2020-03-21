@@ -27,7 +27,8 @@
   import Vue from "vue";
   import {Component} from "vue-property-decorator";
   import Calendar from '@/components/Money/Calendar.vue';
-  import model from "@/model";
+  import model from "@/models/model";
+  import labelBar from "@/models/labelModel";
 
   @Component({
     components: {
@@ -46,7 +47,7 @@
       notes: "",
       type: "-",
     };
-    labels = ["衣", "食", "住", "行"];
+    labels =labelBar.extract();
     padShow = true;
 
     padShowUpdate(value: boolean) {

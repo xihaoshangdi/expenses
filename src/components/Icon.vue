@@ -29,5 +29,9 @@
         width: 21px;
         height: 21px;
     }
+    .labels-icon{
+        width: 45px;
+        height: 45px;
+    }
 
 </style>
