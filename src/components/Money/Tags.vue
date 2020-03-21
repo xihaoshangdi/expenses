@@ -3,15 +3,14 @@
         <Icon name="labels" class-prefix="information"></Icon>
 
         <ul class="tagList">
-
                 <li
                         v-for="item of dataSource"
                         :key="item"
                         @click="toggle(item)"
                         :class="{'selected':dataTags.indexOf(item)>=0}"
                 >
-                    <Icon :name='item'/>
-                    {{item}}
+                    <span class="icon"><Icon :name='item'/></span>
+                   <span class="item">{{item}}</span>
                 </li>
         </ul>
         <button class="tagBtn" @click="create">Add</button>
@@ -59,19 +58,16 @@
     @import "~@/assets/styles/global.scss";
 
     .box {
-        @extend %informationBox
+        @extend %informationBox;
+        position: relative;
     }
 
     .tagList {
         width: 70vw;
         margin-left: 15px;
         display: flex;
-        flex-direction: row;
         overflow-x: auto;
-        position: relative;
-
         > li {
-
             background: $rgba;
             $h: 24px;
             height: $h;
@@ -80,14 +76,28 @@
             padding: 0 10px;
             margin-right: 10px;
             flex: none;
-
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            > .icon{
+                display: none;
+            }
             &.selected {
                 background: $tag-choose-bg;
                 color: $tag-choose-color;
+                height: $h;
+                width: $h;
+                padding: 0;
+                > .icon{
+                    display: block;
+                }
+                > .item{
+                    display: none;
+                }
             }
         }
     }
-
     .tagBtn {
         right: 15px;
         position: absolute;
