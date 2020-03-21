@@ -46,6 +46,7 @@
     records: Record[] = JSON.parse(localStorage.getItem("records") || "[]");
     labels = ["1", "2", "3", "4"];
     padShow = true;
+    timer: number | undefined;
     record: Record = {
       amount: "",
       headline: "",
@@ -57,8 +58,10 @@
     };
 
     padShowUpdate(value: boolean) {
-      //函数防抖
-      this.padShow=value;
+        if(this.timer) clearTimeout(this.timer);
+        this.timer=setTimeout(()=>{
+          this.padShow=value;
+        },0);
     }
 
     onPadsUpdate(value: string) {
@@ -83,11 +86,12 @@
     }
 
     .fade-enter-active {
-        transition: all 1.5s;
+        transition: all 3.5s;
     }
 
     .fade-enter {
         opacity: 0;
+        height: 0;
     }
 
     .fade-leave-to {
