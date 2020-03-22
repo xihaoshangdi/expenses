@@ -40,13 +40,7 @@
     }
 
     create() {
-      const name = window.prompt("请输入标签名");
-      if (name === "" && name === null) {
-        window.alert("标签名不能为空");
-      } else if(name!==null){
-        console.log(name);
-        labelBar.creat(name);
-      }
+     labelBar.creat();
     }
   }
 </script>

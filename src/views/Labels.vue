@@ -1,7 +1,6 @@
 <template>
     <Layout>
         <ol class="labels">
-            {{labels}}
             <li v-for="label of labels" :key="label">
                 <span>{{label}}</span>
                 <Icon name="right"/>
@@ -22,13 +21,7 @@
   export default class Labels extends Vue {
     labels = labelBar.extract();
     createTag() {
-      const name = window.prompt("请输入标签名");
-      if (name === "" && name === null) {
-        window.alert("标签名不能为空");
-      } else if(name!==null){
-        console.log(name);
-        labelBar.creat(name);
-      }
+      labelBar.creat()
     }
   }
 </script>
@@ -38,7 +31,6 @@
     @import "~@/assets/styles/labels.scss";
 
     .labels {
-        border: $t;
         background: $label-bg;
         font-size: 16px;
         padding-left: 16px;
@@ -55,7 +47,6 @@
     }
 
     .btn {
-        border: $t;
         display: flex;
         justify-content: center;
         margin-top: 30px;
