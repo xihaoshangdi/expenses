@@ -5,12 +5,12 @@
         <ul class="tagList">
                 <li
                         v-for="label of labels"
-                        :key="label"
-                        @click="toggle(label)"
-                        :class="{'selected':dataTags.indexOf(label)>=0}"
+                        :key="label.id"
+                        @click="toggle(label.name)"
+                        :class="{'selected':dataTags.indexOf(label.name)>=0}"
                 >
-                    <span class="icon"><Icon :name='label'/></span>
-                   <span class="item">{{label}}</span>
+                    <span class="icon"><Icon :name='label.name'/></span>
+                   <span class="item">{{label.name}}</span>
                 </li>
         </ul>
         <button class="tagBtn" @click="create">Add</button>
