@@ -1,5 +1,3 @@
-import Tags from '@/components/Money/Tags.vue';
-
 const localeKey = 'labelBar';
 type Tag = {
   id: string;
@@ -27,7 +25,6 @@ const labelBar: LabelBar = {
     }
   },
   extract() {
-    // '[{"衣"},"食","住","行"]'
     const defaultTags=[{id:'衣',name:'衣'},{id:'食',name:'食'},{id:'住',name:'住'},{id:'行',name:'行'}];
     if (window.localStorage.getItem(localeKey) ===null){
       this.labelsList=defaultTags;
