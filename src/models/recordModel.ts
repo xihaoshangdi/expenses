@@ -1,15 +1,17 @@
+import Clone from '@/lib/Clone';
+
 const localeKey = 'recordBar';
 
-
 const record = {
-  clone(data: RecordBar[] | RecordBar) {
-    return JSON.parse(JSON.stringify(data)) as RecordBar;
+  data:[] as RecordBar [],
+  add(record: RecordBar){
+    this.data.push(Clone(record));
   },
   extract() {
-    return JSON.parse(window.localStorage.getItem(localeKey) || '[]');
+    this.data=JSON.parse(window.localStorage.getItem(localeKey) || '[]');
   },
-  save(data: RecordBar[]) {
-    window.localStorage.setItem(localeKey, JSON.stringify(data));
+  save() {
+    window.localStorage.setItem(localeKey, JSON.stringify(this.data));
   }
 };
 

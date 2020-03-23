@@ -42,10 +42,14 @@
       }
     }
     onUpdateLabel(value: string) {
-      const result=labelBar.update(this.label.id,value);
-      if(!result.status){
-        alert(result.message)
+      if (this.label!==undefined){
+        const result=labelBar.update(this.label.id,value);
+        if(!result.status){
+          alert(result.message)
+        }
       }
+
+
     }
     remove(){
       if(this.label&&this.label.id){

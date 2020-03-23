@@ -36,8 +36,8 @@
   import Vue from "vue";
   import {Component} from "vue-property-decorator";
   import Calendar from '@/components/Money/Calendar.vue';
-  import record from "@/models/recordModel";
-
+  import Record from "@/models/recordModel";
+  Record.extract();//初始化record
   @Component({
     components: {
       Calendar,
@@ -45,7 +45,6 @@
     }
   })
   export default class Money extends Vue {
-    records=record.extract();
     timer: number | undefined;
     record: RecordBar = {
       amount: "",
@@ -77,8 +76,8 @@
     }
 
     onRecordSave() {
-      this.records.push(record.clone(this.record));
-      record.save(this.records);
+      Record.add(this.record);
+      Record.save();
       alert('记账成功');
       location.reload();
     }
