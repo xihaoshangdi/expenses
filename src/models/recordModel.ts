@@ -1,6 +1,7 @@
 const localeKey = 'recordBar';
 
-const model = {
+
+const record = {
   clone(data: RecordBar[] | RecordBar) {
     return JSON.parse(JSON.stringify(data)) as RecordBar;
   },
@@ -12,5 +13,5 @@ const model = {
   }
 };
 
-export default model;
+export default record;
 
