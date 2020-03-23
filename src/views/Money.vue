@@ -11,6 +11,7 @@
         <Tags :data-tags.sync="record.tags"/>
         <Calendar :data-date.sync="record.date"></Calendar>
         <Notes
+                field-name="备注："
                 placeholder="在这里输入备注"
                 @update:value="onUpdateNotes"
                 @click.native="padShowUpdate(false)"
