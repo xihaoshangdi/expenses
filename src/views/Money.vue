@@ -1,5 +1,6 @@
 <template>
     <Layout class-prefix="layout">
+        {{this.record}}
         <Amount :data-money.sync="record.amount"/>
         <Headline
                 :data-title.sync="record.headline"
@@ -10,7 +11,8 @@
         <Tags :data-tags.sync="record.tags"/>
         <Calendar :data-date.sync="record.date"></Calendar>
         <Notes
-                :data-notes.sync="record.notes"
+                placeholder="在这里输入备注"
+                @update:value="onUpdateNotes"
                 @click.native="padShowUpdate(false)"
                 @focusout.native="padShowUpdate(true)"
         />
@@ -53,6 +55,10 @@
       type: "-",
     };
     padShow = true;
+
+    onUpdateNotes(value: string){
+      this.record.notes=value;
+    }
 
     padShowUpdate(value: boolean) {
       const keyControl=document.activeElement as HTMLElement;

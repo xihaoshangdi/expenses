@@ -4,7 +4,9 @@
         <label>
             <input
                     :value="dataTitle"
-                    placeholder="标题"/>
+                    placeholder="标题"
+                    @change="onTitleChange"
+            />
         </label>
     </div>
 </template>
@@ -15,6 +17,10 @@
   @Component
   export default class Headline extends Vue {
     @Prop(String) readonly dataTitle: string | undefined;
+    onTitleChange(event: { target: HTMLInputElement}){
+        this.$emit('update:data-title',event.target.value);
+    }
+
 
   }
 </script>
