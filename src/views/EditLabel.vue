@@ -24,9 +24,9 @@
 <script lang="ts">
   import Vue from "vue";
   import {Component} from "vue-property-decorator";
-  import labelBar from "@/models/labelModel";
   import Notes from "@/components/Money/Notes.vue";
   import Button from "@/components/Button.vue";
+  import store from "@/store/models";
 
   @Component({
     components: {Button, Notes}
@@ -35,14 +35,14 @@
     label?: { id: string ; name: string } = undefined;
     created(): void {
       const id = this.$route.params.id;
-      this.label = labelBar.labelsList.filter(item => item.id === id)[0];
+      this.label = store.findLabel(id);
       if (!this.label) {
         this.$router.replace("/404");
       }
     }
     onUpdateLabel(value: string) {
       if (this.label!==undefined){
-        const result=labelBar.update(this.label.id,value);
+        const result=store.updateLabel(this.label.id,value);
         if(!result.status){
           alert(result.message)
         }
@@ -52,7 +52,7 @@
     }
     remove(){
       if(this.label&&this.label.id){
-        labelBar.remove(this.label.id);
+        store.removeLabel(this.label.id);
         this.$router.back();
       }
 

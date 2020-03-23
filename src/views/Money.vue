@@ -37,9 +37,7 @@
   import {Component} from "vue-property-decorator";
   import Calendar from '@/components/Money/Calendar.vue';
   import store from "@/store/models";
-  //初始化record
   store.extractRecord();
-
   @Component({
     components: {
       Calendar,

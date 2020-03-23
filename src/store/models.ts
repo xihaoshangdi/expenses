@@ -1,10 +1,10 @@
 
 import recordStore from '@/store/recordStore';
-// import tagStore from '@/store/tagStore';
+import labelStore from '@/store/labelStiore';
 
 const store = {
   ...recordStore,
-  // ...tagStore,
+  ...labelStore
 };
 
 console.log(store);

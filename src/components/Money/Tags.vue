@@ -20,12 +20,11 @@
 <script lang="ts">
   import Vue from "vue";
   import {Component, Prop} from "vue-property-decorator";
-  import labelBar from "@/models/labelModel";
-
+  import store from "@/store/models";
   @Component
   export default class Tags extends Vue {
     @Prop(Array) readonly dataTags!: string[];
-    labels=window.labelList;
+    labels=store.labelsList;
 
     tagList: string[] = this.dataTags;
 
@@ -40,7 +39,7 @@
     }
 
     create() {
-     labelBar.creat();
+      store.creatLabel();
     }
   }
 </script>

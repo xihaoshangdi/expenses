@@ -20,16 +20,16 @@
 <script lang="ts">
   import Vue from "vue";
   import {Component} from "vue-property-decorator";
-  import labelBar from "@/models/labelModel";
   import Button from '@/components/Button.vue';
+  import store from "@/store/models";
   @Component({
     components: {Button}
   })
   export default class Labels extends Vue {
-    labels = window.labelList;
+    labels = store.labelsList;
 
     createTag() {
-      labelBar.creat();
+      store.creatLabel();
     }
   }
 </script>

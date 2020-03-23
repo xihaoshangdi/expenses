@@ -17,6 +17,7 @@ Vue.use(vueHashCalendar);
 
 
 
+
 new Vue({
   router,
   store,
