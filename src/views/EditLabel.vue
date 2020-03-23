@@ -1,7 +1,7 @@
 <template>
     <Layout>
         <div class="navBar">
-            <span class="leftIcon">
+            <span class="leftIcon" @click="goBack">
                 <Icon class-prefix="editlabel" name="left"/>
             </span>
             <span class="title">编辑标签</span>
@@ -9,15 +9,14 @@
         </div>
         <div class="form-wrapper">
             <Notes
-                    @keypress="searchGoods"
-                    :field-name="label.name"
-                    placeholder="待更新的标签名"
+                    field-name="标签名"
+                    :placeholder="label.name"
                     @update:value="onUpdateLabel"
             />
         </div>
 
-        <div class="button-wrapper">
-            <Button>编辑标签</Button>
+        <div class="button-wrapper" @click="remove">
+            <Button>删除标签</Button>
         </div>
     </Layout>
 </template>
@@ -33,8 +32,7 @@
     components: {Button, Notes}
   })
   export default class EditLabel extends Vue {
-    label = {};
-
+    label?: { id: string ; name: string } = undefined;
     created(): void {
       const id = this.$route.params.id;
       labelBar.extract();
@@ -44,7 +42,20 @@
       }
     }
     onUpdateLabel(value: string) {
-      console.log(value);
+      const result=labelBar.update(this.label.id,value);
+      if(!result.status){
+        alert(result.message)
+      }
+    }
+    remove(){
+      if(this.label&&this.label.id){
+        labelBar.remove(this.label.id);
+        this.$router.back();
+      }
+
+    }
+    goBack(){
+      this.$router.back();
     }
   }
 </script>

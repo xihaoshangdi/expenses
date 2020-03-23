@@ -1,3 +1,5 @@
+import createId from '@/lib/CreatId';
+
 const localeKey = 'labelBar';
 type Tag = {
   id: string;
@@ -6,6 +8,8 @@ type Tag = {
 type LabelBar = {
   labelsList: Tag[];
   creat: () => undefined | { 'status': boolean; 'message': string };
+  remove: (id: string) => undefined;
+  update: (id: string,name: string) => { 'status': boolean; 'message': string };
   extract: () => Tag[];//返回状态和信息
   save: () => undefined;
 }
@@ -17,11 +21,32 @@ const labelBar: LabelBar = {
     if (labelName === '' && labelName === null) {
       window.alert('标签名不能为空');
     } else if (labelName !== null && names.indexOf(labelName) < 0) {
-      this.labelsList.push({'id':labelName,'name':labelName});
-      console.log(this.labelsList);
+      const index=createId().toString();
+      this.labelsList.push({'id':index,'name':labelName});
       this.save();
     } else {
       return {status: false, message: '待创建标签已经存在'};
+    }
+  },
+  remove(id){
+    const idGroup=this.labelsList.map((item) => item.id);
+    const index=idGroup.indexOf(id);
+    if(index>=0){
+      this.labelsList.splice(index,1);
+      this.save();
+    }
+    return undefined;
+  },
+  update(id,name){
+    const idGroup=this.labelsList.map((item) => item.id);
+    const names = this.labelsList.map((item) => item.name);
+    const index=idGroup.indexOf(id);
+    if(index>=0&&names.indexOf(name)<0){
+      this.labelsList[index].name=name;
+      this.save();
+      return {status: true, message: 'success'};
+    }else{
+      return {status: false, message: '标签名不能相同'};
     }
   },
   extract() {
