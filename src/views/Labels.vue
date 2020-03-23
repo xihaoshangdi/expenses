@@ -26,7 +26,7 @@
     components: {Button}
   })
   export default class Labels extends Vue {
-    labels = labelBar.extract();
+    labels = window.labelList;
 
     createTag() {
       labelBar.creat();

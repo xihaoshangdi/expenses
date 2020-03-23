@@ -25,7 +25,7 @@
   @Component
   export default class Tags extends Vue {
     @Prop(Array) readonly dataTags!: string[];
-    labels=labelBar.extract();
+    labels=window.labelList;
 
     tagList: string[] = this.dataTags;
 

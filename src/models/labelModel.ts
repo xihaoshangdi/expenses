@@ -1,18 +1,6 @@
 import createId from '@/lib/CreatId';
 
 const localeKey = 'labelBar';
-type Tag = {
-  id: string;
-  name: string;
-}
-type LabelBar = {
-  labelsList: Tag[];
-  creat: () => undefined | { 'status': boolean; 'message': string };
-  remove: (id: string) => undefined;
-  update: (id: string,name: string) => { 'status': boolean; 'message': string };
-  extract: () => Tag[];//返回状态和信息
-  save: () => undefined;
-}
 const labelBar: LabelBar = {
   labelsList: [],
   creat() {

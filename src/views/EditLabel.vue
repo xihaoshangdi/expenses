@@ -35,7 +35,6 @@
     label?: { id: string ; name: string } = undefined;
     created(): void {
       const id = this.$route.params.id;
-      labelBar.extract();
       this.label = labelBar.labelsList.filter(item => item.id === id)[0];
       if (!this.label) {
         this.$router.replace("/404");
