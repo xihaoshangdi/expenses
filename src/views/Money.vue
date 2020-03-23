@@ -36,8 +36,10 @@
   import Vue from "vue";
   import {Component} from "vue-property-decorator";
   import Calendar from '@/components/Money/Calendar.vue';
-  import Record from "@/models/recordModel";
-  Record.extract();//初始化record
+  import store from "@/store/models";
+  //初始化record
+  store.extractRecord();
+
   @Component({
     components: {
       Calendar,
@@ -76,8 +78,7 @@
     }
 
     onRecordSave() {
-      Record.add(this.record);
-      Record.save();
+      store.addRecord(this.record);
       alert('记账成功');
       location.reload();
     }
