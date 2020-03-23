@@ -3,16 +3,22 @@
         <Amount :data-money.sync="record.amount"/>
         <Headline
                 :data-title.sync="record.headline"
-                @pad-show="padShowUpdate"
+                tabindex="-1"
+                @click.native="padShowUpdate(false)"
+                @focusout.native="padShowUpdate(true)"
         />
         <Tags :data-tags.sync="record.tags"/>
         <Calendar :data-date.sync="record.date"></Calendar>
-        <Notes :data-notes.sync="record.notes" @pad-show="padShowUpdate"/>
+        <Notes
+                :data-notes.sync="record.notes"
+                @click.native="padShowUpdate(false)"
+                @focusout.native="padShowUpdate(true)"
+        />
         <transition name="fade">
-            <Types v-if="padShow" :data-type.sync="record.type"/>
+            <Types v-show="padShow" :data-type.sync="record.type"/>
         </transition>
         <transition name="fade">
-            <Numberpad v-if="padShow" @update:save="onRecordSave" @update:value="onPadsUpdate"/>
+            <Numberpad v-show="padShow" @update:save="onRecordSave" @update:value="onPadsUpdate"/>
         </transition>
     </Layout>
 </template>
@@ -49,10 +55,14 @@
     padShow = true;
 
     padShowUpdate(value: boolean) {
+      const keyControl=document.activeElement as HTMLElement;
+      keyControl.blur();
       if (this.timer) clearTimeout(this.timer);
       this.timer = setTimeout(() => {
         this.padShow = value;
-      }, 0);
+        keyControl.focus();
+      }, 200);
+
     }
 
     onPadsUpdate(value: string) {
@@ -78,7 +88,7 @@
     }
 
     .fade-enter-active {
-        transition: all 3.5s;
+        transition: all 0.5s;
     }
 
     .fade-enter {

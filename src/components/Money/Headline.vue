@@ -3,9 +3,6 @@
         <Icon name="title" class-prefix="information"></Icon>
         <label>
             <input
-                    @focus="onFocus"
-                    @blur="onBlur"
-                    @change="onValueChanged"
                     :value="dataTitle"
                     placeholder="标题"/>
         </label>
@@ -19,15 +16,6 @@
   export default class Headline extends Vue {
     @Prop(String) readonly dataTitle: string | undefined;
 
-    onValueChanged(event: { target: HTMLInputElement }) {
-      this.$emit('update:data-title', event.target.value);
-    }
-    onFocus(){
-      this.$emit('pad-show',false);
-    }
-    onBlur(){
-      this.$emit('pad-show',true);
-    }
   }
 </script>
 
