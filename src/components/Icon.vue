@@ -33,5 +33,9 @@
         width: 45px;
         height: 45px;
     }
+    .editlabel-icon {
+        width: 100%;
+        height: 100%;
+    }
 
 </style>

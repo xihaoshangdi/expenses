@@ -43,15 +43,11 @@
     @import "~@/assets/styles/global.scss";
 
     .amount-area {
-        @extend %outerShadow;
+        @extend %navBar;
         display: flex;
-        max-height: 70px;
         flex-direction: row;
         justify-content: center;
         align-items: center;
-        background-color: $blue;
-        padding: 22px 0 22px 0;
-        color: $white;
 
         span {
             background: transparent;

@@ -11,8 +11,8 @@
                 <Icon name="right"/>
             </router-link>
         </div>
-        <div class="btn" @click="createTag">
-            <Icon class-prefix="labels" name="添加"/>
+        <div class="box">
+        <Button @click="createTag">新建标签</Button>
         </div>
     </Layout>
 </template>
@@ -21,8 +21,10 @@
   import Vue from "vue";
   import {Component} from "vue-property-decorator";
   import labelBar from "@/models/labelModel";
-
-  @Component
+  import Button from '@/components/Button.vue';
+  @Component({
+    components: {Button}
+  })
   export default class Labels extends Vue {
     labels = labelBar.extract();
 
@@ -37,6 +39,7 @@
     @import "~@/assets/styles/labels.scss";
 
     .labels {
+
         background: $label-bg;
         font-size: 16px;
         padding-left: 16px;
@@ -50,10 +53,10 @@
             border-bottom: $label-hr;
         }
     }
-
-    .btn {
-        display: flex;
-        justify-content: center;
-        margin-top: 30px;
+    .box{
+        text-align: center;
+        padding: 16px;
+        margin-top: 44-16px;
     }
+
 </style>
