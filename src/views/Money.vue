@@ -36,8 +36,6 @@
   import Vue from "vue";
   import {Component} from "vue-property-decorator";
   import Calendar from '@/components/Money/Calendar.vue';
-  import store from "@/store/models";
-  store.extractRecord();
   @Component({
     components: {
       Calendar,
@@ -55,6 +53,10 @@
       type: "-",
     };
     padShow = true;
+
+    created(): void {
+      this.$store.commit('extractRecord');
+    }
 
     onUpdateNotes(value: string){
       this.record.notes=value;
@@ -76,7 +78,7 @@
     }
 
     onRecordSave() {
-      store.addRecord(this.record);
+      this.$store.commit('addRecord',this.record);
       alert('记账成功');
       location.reload();
     }
