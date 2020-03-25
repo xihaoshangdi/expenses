@@ -20,13 +20,20 @@
 <script lang="ts">
   import Vue from "vue";
   import {Component, Prop} from "vue-property-decorator";
-  import store from "@/store/models";
   @Component
   export default class Tags extends Vue {
     @Prop(Array) readonly dataTags!: string[];
-    labels=store.labelsList;
 
     tagList: string[] = this.dataTags;
+
+    get labels(){
+      return this.$store.state.labelsList;
+    }
+
+    created(): void {
+      this.$store.commit('extractLabel');
+
+    }
 
     toggle(tag: string) {
       const index = this.dataTags.indexOf(tag);
@@ -39,7 +46,7 @@
     }
 
     create() {
-      store.creatLabel();
+      this.$store.commit('creatLabel');
     }
   }
 </script>

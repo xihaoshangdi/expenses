@@ -26,36 +26,31 @@
   import {Component} from "vue-property-decorator";
   import Notes from "@/components/Money/Notes.vue";
   import Button from "@/components/Button.vue";
-  import store from "@/store/models";
 
   @Component({
     components: {Button, Notes}
   })
   export default class EditLabel extends Vue {
-    label?: { id: string ; name: string } = undefined;
+    get label(){
+      return this.$store.state.currentLabel;
+    }
     created(): void {
       const id = this.$route.params.id;
-      this.label = store.findLabel(id);
-      if (!this.label) {
+      this.$store.commit('findCurrentLabel',id);
+      if (!this.$store.state.currentLabel) {
         this.$router.replace("/404");
       }
     }
     onUpdateLabel(value: string) {
       if (this.label!==undefined){
-        const result=store.updateLabel(this.label.id,value);
-        if(!result.status){
-          alert(result.message)
-        }
+        this.$store.commit('updateLabel',value);
       }
-
-
     }
     remove(){
-      if(this.label&&this.label.id){
-        store.removeLabel(this.label.id);
+      if (this.label!==undefined){
+        this.$store.commit('removeLabel');
         this.$router.back();
       }
-
     }
     goBack(){
       this.$router.back();

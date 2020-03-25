@@ -21,15 +21,20 @@
   import Vue from "vue";
   import {Component} from "vue-property-decorator";
   import Button from '@/components/Button.vue';
-  import store from "@/store/models";
   @Component({
     components: {Button}
   })
   export default class Labels extends Vue {
-    labels = store.labelsList;
+    get labels(){
+      return this.$store.state.labelsList;
+    }
+
+    created(): void {
+        this.$store.commit('extractLabel')
+    }
 
     createTag() {
-      store.creatLabel();
+      this.$store.commit('creatLabel');
     }
   }
 </script>
