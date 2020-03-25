@@ -36,6 +36,7 @@
     }
     created(): void {
       const id = this.$route.params.id;
+      this.$store.commit('extractLabel');
       this.$store.commit('findCurrentLabel',id);
       if (!this.$store.state.currentLabel) {
         this.$router.replace("/404");
