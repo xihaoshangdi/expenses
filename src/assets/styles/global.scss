@@ -8,6 +8,12 @@ $font-song: Georgia, "Nimbus Roman No9 L", "Songti SC", "Noto Serif CJK SC", "So
 $color-highlight: #f00;
 // 全局字体颜色-淡灰
 $font-color:#344A5F;
+//
+h1,h2,h3,h4,h5,h6{
+  font-weight: normal;
+}
+
+
 //Money amount color
 $rgba:rgba(0,0,0,0.1);
 $white-rgba:rgba(255,255,255,0.8);
@@ -58,6 +64,7 @@ $body-bg:#e6e6e6;
   background-color: $blue;
   color: $white;
 }
+
 
 
 

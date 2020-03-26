@@ -1,53 +1,118 @@
 <template>
     <Layout>
-       <Tabs
-               :tabs="recordTypeList"
-               :value.sync="type"
-               classPrefix="statistic-nav"
-       ></Tabs>
+        <Tabs
+                :tabs="recordTypeList"
+                :value.sync="type"
+                classPrefix="statistic-nav"
+        ></Tabs>
         <Tabs :tabs="intervalList"
               :value.sync="interval"
+              classPrefix="statistic-type"
         ></Tabs>
-        {{type}}
-        {{interval}}
+        <div class="container-box">
+            <ol>
+                <li
+                        v-for="(item,index) of RecordList"
+                        :key="index"
+                >
+                    <h3 class="title">{{item.title}}</h3>
+                    <div class="record-box">
+                        <ol>
+                            <li v-for="(i,index) of item.recordList"
+                                :key="index"
+                                class="record"
+                            >
+                                 <span>{{labelString(i.tags)}}</span>
+                                <span class="headline">{{i.headline}}</span>
+                                <span>￥{{i.amount}}</span>
+                            </li>
+                        </ol>
+                    </div>
+                </li>
+            </ol>
+        </div>
+
     </Layout>
 </template>
 
 
-
 <script lang="ts">
-  import Vue from 'vue';
-  import {Component} from 'vue-property-decorator';
-  import Tabs from '@/components/Tabs.vue';
-  import intervalList from '@/constants/intervalList';
-  import recordTypeList from '@/constants/recordTypeList';
+  import Vue from "vue";
+  import {Component} from "vue-property-decorator";
+  import Tabs from "@/components/Tabs.vue";
+  import intervalList from "@/constants/intervalList";
+  import recordTypeList from "@/constants/recordTypeList";
+
+  type Census = {
+    [title: string]: CensusItem;
+  }
+  type CensusItem = {
+    title: string;
+    recordList: RecordBar[];
+  }
   @Component({
     components: {Tabs},
   })
+
   export default class Statistics extends Vue {
-    type = '-';
-    interval = 'day';
+    type = "-";
+    interval = "day";
     intervalList = intervalList;
     recordTypeList = recordTypeList;
+
+    labelString(tags: Tag[]){
+      return  tags.length===0?'无':tags.join(',');
+    }
+
+    get RecordList() {
+      const data: RecordBar[] = this.$store.state.recordData;
+      const daily = {} as Census;
+      for (let i = 0; i < data.length; i++) {
+        const item = data[i];
+        const date = item.date;
+        if (daily[date] === undefined) {
+          daily[date] = {title: date, recordList: []};
+        }
+        daily[date].recordList.push(data[i]);
+
+      }
+      console.log(daily);
+      return daily;
+    }
+
+    beforeCreate(): void {
+      this.$store.commit("extractRecord");
+    }
   }
 </script>
 
 <style scoped lang="scss">
     @import "~@/assets/styles/global.scss";
-    .statistic-nav-tabs{
+    .statistic-nav-tabs {
         @extend %navBar;
     }
-    /* eslint-disable */
-    /*::v-deep .type-tabs-item {*/
-    /*    background: white;*/
-    /*    &.selected {*/
-    /*        background: #C4C4C4;*/
-    /*        &::after {*/
-    /*            display: none;*/
-    /*        }*/
-    /*    }*/
-    /*}*/
-    /*::v-deep .interval-tabs-item {*/
-    /*    height: 48px;*/
-    /*}*/
+    .statistic-type-tabs ::v-deep li {
+        padding: 5px 0;
+        background-color: cornflowerblue ;
+    }
+    %item {
+        padding: 8px 16px;
+        line-height: 24px;
+        display: flex;
+        justify-content: space-between;
+        align-content: center;
+    }
+    .title {
+        @extend %item;
+    }
+    .record {
+        background: white;
+        @extend %item;
+    }
+    .headline {
+        margin-right: auto;
+        margin-left: 16px;
+        color: #999;
+        word-break: break-all;
+    }
 </style>
