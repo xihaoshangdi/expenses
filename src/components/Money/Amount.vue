@@ -48,6 +48,7 @@
         flex-direction: row;
         justify-content: center;
         align-items: center;
+        padding: 22px 0;
 
         span {
             background: transparent;

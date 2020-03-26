@@ -64,12 +64,12 @@
 
     .navBar {
         @extend %navBar;
-
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
         text-align: center;
+        padding: 23px 0;
         > .title {
             height: 18px;
         }

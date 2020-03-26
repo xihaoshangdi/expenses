@@ -1,6 +1,6 @@
 <template>
     <div class="nav-box">
-        <div class="nav-content" :class="classPrefix && `${classPrefix}-content`   ">
+        <div class="nav-content" :class="classPrefix && `${classPrefix}-content`">
             <slot></slot>
         </div>
         <Nav/>

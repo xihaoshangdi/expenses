@@ -27,7 +27,6 @@
 <style lang="scss" scoped>
     @import "~@/assets/styles/global.scss";
     .note{
-        border: $t;
         flex-grow: 1;
         background-color:#f5f5f5;
     }
