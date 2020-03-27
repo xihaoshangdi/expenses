@@ -49,6 +49,7 @@
         justify-content: center;
         align-items: center;
         padding: 22px 0;
+        overflow: hidden;
 
         span {
             background: transparent;

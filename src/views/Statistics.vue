@@ -10,7 +10,7 @@
               classPrefix="statistic-type"
         ></Tabs>
         <div class="container-box">
-            <ol>
+            <ol v-if="groupList.length>0">
                 <li
                         v-for="(item,index) of groupList"
                         :key="index"
@@ -30,8 +30,10 @@
                     </div>
                 </li>
             </ol>
+            <div v-else>
+                目前不存在相关纪录
+            </div>
         </div>
-
     </Layout>
 </template>
 
@@ -59,7 +61,7 @@
 
   export default class Statistics extends Vue {
     type = "-";
-    interval = "week";
+    interval = "day";
     intervalList = intervalList;
     recordTypeList = recordTypeList;
 
@@ -134,9 +136,12 @@
     }
 
     get groupList() {
-      if (this.$store.state.recordData.length===0)return [];
       const dataList: RecordBar[] = Clone(this.$store.state.recordData)
         .filter((item: RecordBar) => item.type === this.type);
+      if (dataList.length===0){
+        //TODO
+        return [];
+      }
       dataList.sort((a, b) => {
         return dayjs(b.date).valueOf() - dayjs(a.date).valueOf();
       });

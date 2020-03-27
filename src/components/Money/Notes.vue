@@ -45,6 +45,7 @@
             background: transparent;
             border: none;
             padding-right: 16px;
+
         }
     }
 </style>
