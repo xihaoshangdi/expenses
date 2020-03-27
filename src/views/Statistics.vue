@@ -134,6 +134,7 @@
     }
 
     get groupList() {
+      if (this.$store.state.recordData.length===0)return [];
       const dataList: RecordBar[] = Clone(this.$store.state.recordData)
         .filter((item: RecordBar) => item.type === this.type);
       dataList.sort((a, b) => {
