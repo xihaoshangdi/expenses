@@ -45,14 +45,13 @@
   import dayjs from "dayjs";
   import Clone from "@/lib/Clone";
 
-
   type Census = {
     title: string;
     total: number;
     recordList: RecordBar[];
   }[];
   type Interval = {
-    type: week | day | month;
+    type: 'week' | 'day' | 'month';
   }
   @Component({
     components: {Tabs},
@@ -60,12 +59,12 @@
 
   export default class Statistics extends Vue {
     type = "-";
-    interval='week';
+    interval = "week";
     intervalList = intervalList;
     recordTypeList = recordTypeList;
 
-    get region(){
-      return {type:this.interval} as Interval
+    get region() {
+      return {type: this.interval} as Interval;
     }
 
 
@@ -75,34 +74,63 @@
 
     timeFormat(value: string) {
       const date = value.split("T")[0];
-      const today = dayjs();
-      if (this.region.type==='day'){
-        if (today.isSame(date, "day")) {
-          return "今天";
-        } else if (today.subtract(1, "day").isSame(date, "day")) {
-          return "昨天";
-        } else if (today.subtract(2, "day").isSame(date, "day")) {
-          return "前天";
-        } else if (today.isSame(date, "year")) {
-          return dayjs(date).format("M月D日"); // '25/01/2019'
-        } else {
-          return dayjs(date).format("YY年M月D日");
-        }
-      }else if(this.region.type==='week'){
-        if (today.isSame(date, "week")) {
-          return "本周";
-        } else{
-          if (today.isSame(date, "year")){
-            const num=dayjs(date).day();
-            const weekStart=dayjs(date).subtract(num,'day');
-            const weekEnd=dayjs(date).add(7-num,'day');
-            console.log(weekStart,weekEnd);
-            return dayjs(weekStart).format("M月D日")+'--'+dayjs(weekEnd).format("M月D日");
-          }
+      let result: string | undefined = undefined;
+      switch (this.interval) {
+        case "day":
+          result = this.FormDay(date);
+          break;
+        case "week":
+          result = this.FormWeek(date);
+          break;
+        case "month":
+          result = this.FormMonth(date);
+      }
+      return result;
+    }
 
-        }
+    FormDay(date: string) {
+      const today = dayjs();
+      if (today.isSame(date, "day")) {
+        return "今天";
+      } else if (today.subtract(1, "day").isSame(date, "day")) {
+        return "昨天";
+      } else if (today.subtract(2, "day").isSame(date, "day")) {
+        return "前天";
+      } else if (today.isSame(date, "year")) {
+        return dayjs(date).format("M月D日"); // '25/01/2019'
+      } else {
+        return dayjs(date).format("YY年M月D日");
       }
 
+    }
+
+    FormWeek(date: string) {
+      const today = dayjs();
+      if (today.isSame(date, "week")) {
+        return "本周";
+      } else {
+        const start = dayjs(date).startOf("week");
+        const end = dayjs(date).endOf("week");
+        if (today.isSame(date, "year")){
+          return dayjs(start).format("M月D日")+'---'+dayjs(end).format("M月D日");
+        }else{
+          return dayjs(start).format("YY年M月D日")+'---'+dayjs(end).format("YY年M月D日");
+        }
+      }
+    }
+
+    FormMonth(date: string) {
+      const today = dayjs();
+      if (today.isSame(date, "month")) {
+        return "本月";
+      } else {
+        const start = dayjs(date).startOf("month");
+        if (today.isSame(date, "year")){
+          return dayjs(start).format("M月")
+        }else{
+          return dayjs(start).format("YY年M月")
+        }
+      }
     }
 
     get groupList() {
