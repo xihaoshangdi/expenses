@@ -36,7 +36,6 @@ const store = new Vuex.Store({
       }else{
         state.labelsList=defaultTags;
       }
-      console.log(state.labelsList);
     },
     saveLabel(state) {
       window.localStorage.setItem(localeLabelKey, JSON.stringify(state.labelsList));

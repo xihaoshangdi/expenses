@@ -53,7 +53,7 @@
       amount: "",
       headline: "",
       tags: [],
-      date: new Date().toLocaleDateString(),
+      date: new Date().toISOString(),
       notes: "",
       type: "-",
     };

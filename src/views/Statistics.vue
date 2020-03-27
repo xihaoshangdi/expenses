@@ -15,7 +15,7 @@
                         v-for="(item,index) of RecordList"
                         :key="index"
                 >
-                    <h3 class="title">{{item.title}}</h3>
+                    <h3 class="title">{{timeFormat(item.title)}}</h3>
                     <div class="record-box">
                         <ol>
                             <li v-for="(i,index) of item.recordList"
@@ -42,7 +42,7 @@
   import Tabs from "@/components/Tabs.vue";
   import intervalList from "@/constants/intervalList";
   import recordTypeList from "@/constants/recordTypeList";
-
+  import dayjs from 'dayjs';
   type Census = {
     [title: string]: CensusItem;
   }
@@ -60,8 +60,23 @@
     intervalList = intervalList;
     recordTypeList = recordTypeList;
 
-    labelString(tags: Tag[]){
+    labelString(tags: string[]){
       return  tags.length===0?'无':tags.join(',');
+    }
+    timeFormat(value: string){
+      const  date=value.split('T')[0];
+      const today=dayjs();
+      if(today.isSame(date, 'day')){
+        return '今天'
+      }else if(today.subtract(1, 'day').isSame(date,'day')){
+        return '昨天'
+      }else if(today.subtract(2, 'day').isSame(date,'day')){
+        return '前天'
+      }else if(today.isSame(date,'year')){
+        return dayjs(date).format('M月D日') // '25/01/2019'
+      }else{
+        return dayjs(date).format('YY年M月D日');
+      }
     }
 
     get RecordList() {
@@ -76,7 +91,7 @@
         daily[date].recordList.push(data[i]);
 
       }
-      console.log(daily);
+
       return daily;
     }
 

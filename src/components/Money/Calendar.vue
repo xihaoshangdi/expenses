@@ -2,7 +2,7 @@
     <div class="box">
         <Icon name="date" class-prefix="information"></Icon>
         <div class="date" @click="showCal">
-            {{dataDate}}
+            {{time}}
         </div>
         <vue-hash-calendar
                 :visible.sync="Cal.visible"
@@ -27,7 +27,13 @@
   }
   @Component
   export default class Calendar extends Vue {
-    @Prop(String) readonly dataDate: string | undefined;
+    @Prop({required:true}) readonly dataDate!: string;
+
+    get time(){
+      return this.dataDate.split('T')[0];
+    }
+
+
     Cal = {
       visible: false,
       model: "dialog",
@@ -39,8 +45,9 @@
       this.Cal.visible = true;
     }
 
+
     onDateChange(value: Date) {
-      this.$emit("update:data-date", value.toLocaleDateString());
+      this.$emit("update:data-date", value.toISOString());
     }
   }
 </script>
