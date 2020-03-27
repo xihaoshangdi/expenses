@@ -12,17 +12,17 @@
         <div class="container-box">
             <ol>
                 <li
-                        v-for="(item,index) of RecordList"
+                        v-for="(item,index) of groupList"
                         :key="index"
                 >
-                    <h3 class="title">{{timeFormat(item.title)}}</h3>
+                    <h3 class="title">{{timeFormat(item.title)}}<span>￥{{item.total}}</span></h3>
                     <div class="record-box">
                         <ol>
                             <li v-for="(i,index) of item.recordList"
                                 :key="index"
                                 class="record"
                             >
-                                 <span>{{labelString(i.tags)}}</span>
+                                <span>{{labelString(i.tags)}}</span>
                                 <span class="headline">{{i.headline}}</span>
                                 <span>￥{{i.amount}}</span>
                             </li>
@@ -42,14 +42,15 @@
   import Tabs from "@/components/Tabs.vue";
   import intervalList from "@/constants/intervalList";
   import recordTypeList from "@/constants/recordTypeList";
-  import dayjs from 'dayjs';
+  import dayjs from "dayjs";
+  import Clone from "@/lib/Clone";
+
+
   type Census = {
-    [title: string]: CensusItem;
-  }
-  type CensusItem = {
     title: string;
+    total: number;
     recordList: RecordBar[];
-  }
+  }[];
   @Component({
     components: {Tabs},
   })
@@ -60,39 +61,48 @@
     intervalList = intervalList;
     recordTypeList = recordTypeList;
 
-    labelString(tags: string[]){
-      return  tags.length===0?'无':tags.join(',');
+    labelString(tags: string[]) {
+      return tags.length === 0 ? "无" : tags.join(",");
     }
-    timeFormat(value: string){
-      const  date=value.split('T')[0];
-      const today=dayjs();
-      if(today.isSame(date, 'day')){
-        return '今天'
-      }else if(today.subtract(1, 'day').isSame(date,'day')){
-        return '昨天'
-      }else if(today.subtract(2, 'day').isSame(date,'day')){
-        return '前天'
-      }else if(today.isSame(date,'year')){
-        return dayjs(date).format('M月D日') // '25/01/2019'
-      }else{
-        return dayjs(date).format('YY年M月D日');
+
+    timeFormat(value: string) {
+      const date = value.split("T")[0];
+      const today = dayjs();
+      if (today.isSame(date, "day")) {
+        return "今天";
+      } else if (today.subtract(1, "day").isSame(date, "day")) {
+        return "昨天";
+      } else if (today.subtract(2, "day").isSame(date, "day")) {
+        return "前天";
+      } else if (today.isSame(date, "year")) {
+        return dayjs(date).format("M月D日"); // '25/01/2019'
+      } else {
+        return dayjs(date).format("YY年M月D日");
       }
     }
 
-    get RecordList() {
-      const data: RecordBar[] = this.$store.state.recordData;
-      const daily = {} as Census;
-      for (let i = 0; i < data.length; i++) {
-        const item = data[i];
-        const date = item.date;
-        if (daily[date] === undefined) {
-          daily[date] = {title: date, recordList: []};
+    get groupList() {
+      const dataList: RecordBar[] =Clone(this.$store.state.recordData)
+        .filter((item: RecordBar) => item.type === this.type);
+      dataList.sort((a, b) => {
+        return dayjs(b.date).valueOf() - dayjs(a.date).valueOf();
+      });
+      const result: Census = [{
+        title: dataList[0].date,
+        total: parseFloat(dataList[0].amount),
+        recordList: [dataList[0]]
+      }];
+      for (let i = 1; i < dataList.length; i++) {
+        const current = dataList[i];
+        const last = result[result.length - 1];
+        if (dayjs(current.date).isSame(last.title, "day")) {
+          last.total += parseFloat(current.amount);
+          last.recordList.push(current);
+        } else {
+          result.push({title: current.date, total: parseFloat(current.amount), recordList: [current]});
         }
-        daily[date].recordList.push(data[i]);
-
       }
-
-      return daily;
+      return result;
     }
 
     beforeCreate(): void {
@@ -103,13 +113,16 @@
 
 <style scoped lang="scss">
     @import "~@/assets/styles/global.scss";
+
     .statistic-nav-tabs {
         @extend %navBar;
     }
+
     .statistic-type-tabs ::v-deep li {
         padding: 5px 0;
-        background-color: cornflowerblue ;
+        background-color: cornflowerblue;
     }
+
     %item {
         padding: 8px 16px;
         line-height: 24px;
@@ -117,13 +130,16 @@
         justify-content: space-between;
         align-content: center;
     }
+
     .title {
         @extend %item;
     }
+
     .record {
         background: white;
         @extend %item;
     }
+
     .headline {
         margin-right: auto;
         margin-left: 16px;
