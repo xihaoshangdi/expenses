@@ -13,15 +13,11 @@
                 placeholder="在这里输入备注"
                 @update:value="onUpdateNotes"
         />
-        <transition name="fade">
-            <Tabs :tabs="recordTypeList"
-                  :value.sync="record.type"
-                  v-show="padShow"
-            ></Tabs>
-        </transition>
-        <transition name="fade">
-            <Numberpad v-show="padShow" @update:save="onRecordSave" @update:value="onPadsUpdate"/>
-        </transition>
+        <Tabs :tabs="recordTypeList"
+              :value.sync="record.type"
+        ></Tabs>
+        <Numberpad @update:save="onRecordSave" @update:value="onPadsUpdate"/>
+
     </Layout>
 </template>
 
@@ -99,19 +95,6 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-    }
-
-    .fade-enter-active {
-        transition: all 0.5s;
-    }
-
-    .fade-enter {
-        opacity: 0;
-        height: 0;
-    }
-
-    .fade-leave-to {
-        opacity: 1;
     }
 </style>
 

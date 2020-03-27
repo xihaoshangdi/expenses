@@ -155,6 +155,7 @@
         const current = dataList[i];
         const last = result[result.length - 1];
         if (dayjs(current.date).isSame(last.title, this.region.type)) {
+          console.log(current.amount);
           last.total += parseFloat(current.amount);
           last.recordList.push(current);
         } else {
