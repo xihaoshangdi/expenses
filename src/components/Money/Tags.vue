@@ -3,15 +3,15 @@
         <Icon name="labels" class-prefix="information"></Icon>
 
         <ul class="tagList">
-                <li
-                        v-for="label of labels"
-                        :key="label.id"
-                        @click="toggle(label.name)"
-                        :class="{'selected':dataTags.indexOf(label.name)>=0}"
-                >
-                    <span class="icon"><Icon :name='label.name'/></span>
-                   <span class="item">{{label.name}}</span>
-                </li>
+            <li
+                    v-for="label of labels"
+                    :key="label.id"
+                    @click="toggle(label.name)"
+                    :class="{'selected':dataTags.indexOf(label.name)>=0}"
+            >
+                <span class="icon"><Icon :name='label.name'/></span>
+                <span class="item">{{label.name}}</span>
+            </li>
         </ul>
         <button class="tagBtn" @click="create">Add</button>
     </div>
@@ -20,18 +20,19 @@
 <script lang="ts">
   import Vue from "vue";
   import {Component, Prop} from "vue-property-decorator";
+
   @Component
   export default class Tags extends Vue {
     @Prop(Array) readonly dataTags!: string[];
 
     tagList: string[] = this.dataTags;
 
-    get labels(){
+    get labels() {
       return this.$store.state.labelsList;
     }
 
     created(): void {
-      this.$store.commit('extractLabel');
+      this.$store.commit("extractLabel");
 
     }
 
@@ -46,13 +47,14 @@
     }
 
     create() {
-      this.$store.commit('creatLabel');
+      this.$store.commit("creatLabel");
     }
   }
 </script>
 
 <style lang="scss" scoped>
     @import "~@/assets/styles/global.scss";
+
     ::v-deep .information-icon {
         width: 1.5em;
         height: 1.5em;
@@ -62,45 +64,44 @@
 
     .box {
         @extend %informationBox;
-        position: relative;
     }
 
     .tagList {
-        border: $t;
-        max-width: 50vw;
+        width: 230px;
         display: flex;
         overflow-x: auto;
+
         > li {
-            background: $rgba;
             $h: 24px;
             height: $h;
             line-height: $h;
             border-radius: $h/2;
-            padding: 0 10px;
-            margin-right: 10px;
+            min-width: 24px;
+            background: #007EE5;
+            color: whitesmoke;
             flex: none;
+            margin-right: 5px;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            > .icon{
+            > .icon {
                 display: none;
             }
             &.selected {
-                background: $tag-choose-bg;
-                color: $tag-choose-color;
+                color: whitesmoke;
+                background-color: #45A1FF;
                 height: $h;
                 width: $h;
-                padding: 0;
-                > .icon{
+                > .icon {
                     display: block;
                 }
-                > .item{
+                > .item {
                     display: none;
                 }
             }
         }
     }
+
     .tagBtn {
         right: 15px;
         position: absolute;

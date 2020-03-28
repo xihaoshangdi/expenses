@@ -55,12 +55,19 @@
 <style lang="scss" scoped>
     @import "~@/assets/styles/global.scss";
 
+    ::v-deep .information-icon {
+        width: 1.5em;
+        height: 1.5em;
+        position: absolute;
+        left: 40px;
+    }
+
     .box {
         @extend %informationBox
     }
 
     .date {
-        width: 80vw;
+        min-width: 230px;
         margin-left: 15px;
         display: flex;
         flex-direction: row;
