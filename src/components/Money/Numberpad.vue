@@ -81,7 +81,7 @@
                 width: 25*2%;
             }
 
-            $bg: #f2f2f2;
+            $bg: #b5ccff;
 
             &:nth-child(1) {
                 background: $bg;

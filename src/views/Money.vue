@@ -1,6 +1,5 @@
 <template>
     <Layout classPrefix="money">
-        {{record}}
         <Hurdle title="SAVE"/>
         <Amount :data-money="record.amount"/>
         <Headline
@@ -44,6 +43,7 @@
     }
   })
   export default class Money extends Vue {
+    random=Math.random();
     recordTypeList = recordTypeList;
     record: RecordBar = {
       amount: "",
@@ -53,17 +53,6 @@
       notes: "",
       type: "-",
     };
-
-    init() {
-      const record = this.record;
-      record.amount = "";
-      record.headline = "";
-      record.tags = [];
-      record.date = new Date().toISOString();
-      record.notes = "";
-      record.type = "-";
-    }
-
     created(): void {
       this.$store.commit("extractRecord");
     }
@@ -83,7 +72,7 @@
       } else {
         this.$store.commit("addRecord", this.record);
         alert("记账成功");
-        this.init();
+        location.reload();
       }
 
     }
@@ -99,7 +88,10 @@
         justify-content: space-between;
     }
     ::v-deep .money-tabs{
-        background-color: #F5EEC1;
+        @extend %innerShadow;
+        > li.selected{
+            background-color: rgba(0,0,0,0.1);
+        }
     }
 </style>
 
