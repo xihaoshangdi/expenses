@@ -25,5 +25,5 @@ new Vue({
 
 
 if (document.documentElement.clientWidth>500){
-  router.push('/qrcode').then(r => console.log(r) );
+  router.push('/qrcode');
 }

@@ -30,7 +30,7 @@
     @Prop({required:true}) readonly dataDate!: string;
 
     get time(){
-      return this.dataDate.split('T')[0];
+      return  new Date(Date.parse(this.dataDate)).toLocaleString();
     }
 
 

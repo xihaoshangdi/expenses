@@ -57,7 +57,6 @@
   import dayjs from "dayjs";
   import Clone from "@/lib/Clone";
   import Hurdle from "@/components/Hurdle.vue";
-
   type Census = {
     title: string;
     total: number;
@@ -113,7 +112,7 @@
       } else if (today.subtract(2, "day").isSame(date, "day")) {
         return "前天";
       } else if (today.isSame(date, "year")) {
-        return dayjs(date).format("M月D日"); // '25/01/2019'
+        return dayjs(date).format("M月D日");
       } else {
         return dayjs(date).format("YY年M月D日");
       }
