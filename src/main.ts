@@ -22,3 +22,8 @@ new Vue({
   store,
   render: h => h(App)
 }).$mount('#app');
+
+
+if (document.documentElement.clientWidth>500){
+  router.push('/qrcode').then(r => console.log(r) );
+}
