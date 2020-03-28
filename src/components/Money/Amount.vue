@@ -1,12 +1,10 @@
 <template>
     <div class="amount-area">
-        <span>人民币↓</span>
+        <span>￥</span>
         <label>
             <input
-                    :key="random"
                     :value="dataMoney"
-                    @change="onValueChanged"
-                    @focus="onLostFocus"
+                    readonly
                     placeholder="金额"/>
         </label>
     </div>
@@ -19,23 +17,8 @@
 
   @Component
   export default class Amount extends Vue {
-    @Prop(String) readonly dataMoney: string | undefined;
-    random = 0;
-    onLostFocus(){
-      if (document.activeElement instanceof HTMLElement) {
-        document.activeElement.blur();
-      }
-    }
-    onValueChanged(event: { target: HTMLInputElement }) {
-      const value: number = parseFloat(event.target.value);
-      if (isNaN(value)) {
-        alert("进行了不合法的输入");
-        this.random = Math.random();
-      } else {
-        this.$emit("update:data-money", value.toString());
-      }
+    @Prop({required:true}) readonly dataMoney: string | undefined;
 
-    }
   }
 </script>
 
@@ -43,36 +26,34 @@
     @import "~@/assets/styles/global.scss";
 
     .amount-area {
-        @extend %navBar;
         display: flex;
-        flex-direction: row;
         justify-content: center;
-        align-items: center;
-        padding: 22px 0;
+        background-color: #4388E9;
+        padding: 15px 0;
         overflow: hidden;
-
+        color: #e6e6e6;
+        @extend %innerShadow;
         span {
             background: transparent;
-            padding-right: 20px;
+            padding-right: 10px;
             color: inherit;
         }
-
         input {
+
             background: transparent;
-            border-bottom: 2px solid $white-rgba;
+            padding-left: 5px;
+            padding-right: 30px;
+            border-bottom: 2px solid rgba(255,255,255,0.8);
             border-top: none;
             border-left: none;
             border-right: none;
-            padding: 0 10vw 0 5px;
             color: inherit;
-            caret-color: $white;
-
+            caret-color: #ecfbfc;
             &::placeholder {
-                color: $white;
+                color: #ecfbfc;
             }
-
             &:focus {
-                border-bottom: 2px solid $white;
+                border-bottom: 2px solid #ecfbfc;
 
             }
 

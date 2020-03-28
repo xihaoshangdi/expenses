@@ -19,12 +19,7 @@
         overflow: hidden;
     }
 
-    .information-icon {
-        width: 1.5em;
-        height: 1.5em;
-        position: absolute;
-        left: 10px;
-    }
+
     .nav-icon{
         width: 21px;
         height: 21px;

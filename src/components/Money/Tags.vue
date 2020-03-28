@@ -53,6 +53,12 @@
 
 <style lang="scss" scoped>
     @import "~@/assets/styles/global.scss";
+    ::v-deep .information-icon {
+        width: 1.5em;
+        height: 1.5em;
+        position: absolute;
+        left: 40px;
+    }
 
     .box {
         @extend %informationBox;
@@ -60,8 +66,8 @@
     }
 
     .tagList {
-        width: 70vw;
-        margin-left: 15px;
+        border: $t;
+        max-width: 50vw;
         display: flex;
         overflow-x: auto;
         > li {

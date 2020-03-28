@@ -5,7 +5,7 @@
             <input
                     :value="dataTitle"
                     placeholder="标题"
-                    @change="onTitleChange"
+                    @input="onTitleChange"
             />
         </label>
     </div>
@@ -27,31 +27,32 @@
 
 <style lang="scss" scoped>
     @import "~@/assets/styles/global.scss";
+    ::v-deep .information-icon {
+        width: 1.5em;
+        height: 1.5em;
+        position: absolute;
+        left: 40px;
+    }
 
     .box {
-        @extend %informationBox
+        @extend %informationBox;
     }
 
     label {
-        margin-left: 15px;
-        font-size: 20px;
-
+        font-size: 18px;
         > input {
-            width: 80vw;
             background: transparent;
-            border-bottom: 1px solid $gray;
+            border-bottom: 1px solid #323232;
             border-top: none;
             border-left: none;
             border-right: none;
-            padding: 0 5px 0 5px;
+            padding-left: 5px;
             color: inherit;
-            caret-color: $gray;
-
             &::placeholder {
-                color: $gray;
+                font-size: inherit;
+                color: #999999;
             }
         }
-
         &:focus-within {
             > input {
                 border-bottom: 1px solid $color-highlight;

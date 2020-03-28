@@ -1,10 +1,10 @@
 <template>
     <Layout classPrefix="money">
-        <Amount :data-money.sync="record.amount"/>
+        {{record}}
+        <Hurdle title="SAVE"/>
+        <Amount :data-money="record.amount"/>
         <Headline
                 :data-title.sync="record.headline"
-                tabindex="-1"
-
         />
         <Tags :data-tags.sync="record.tags"/>
         <Calendar :data-date.sync="record.date"></Calendar>
@@ -33,9 +33,11 @@
   import Calendar from "@/components/Money/Calendar.vue";
   import recordTypeList from "@/constants/recordTypeList";
   import Tabs from "@/components/Tabs.vue";
+  import Hurdle from '@/components/Hurdle.vue';
 
   @Component({
     components: {
+      Hurdle,
       Tabs,
       Calendar,
       Amount, Numberpad, Notes, Headline, Tags

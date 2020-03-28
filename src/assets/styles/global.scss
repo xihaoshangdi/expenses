@@ -46,12 +46,11 @@ $t:1px solid red;
 $g:1px solid black;
 //Money Information
 %informationBox{
-  padding: 20px 10vw 20px 10vw;
+  padding: 20px 0  20px 0;
   position: relative;
   display: flex;
-  justify-content: flex-start;
   align-items: center;
-  width: 100vw;
+  justify-content: center;
 }
 
 
