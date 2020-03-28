@@ -1,6 +1,6 @@
 <template>
     <Layout classPrefix="money">
-        <Hurdle title="SAVE"/>
+        <Hurdle @click.native="onRecordSave" title="SAVE" classPrefix="money"/>
         <Amount :data-money="record.amount"/>
         <Headline
                 :data-title.sync="record.headline"
@@ -32,7 +32,7 @@
   import Calendar from "@/components/Money/Calendar.vue";
   import recordTypeList from "@/constants/recordTypeList";
   import Tabs from "@/components/Tabs.vue";
-  import Hurdle from '@/components/Hurdle.vue';
+  import Hurdle from "@/components/Hurdle.vue";
 
   @Component({
     components: {
@@ -43,7 +43,6 @@
     }
   })
   export default class Money extends Vue {
-    random=Math.random();
     recordTypeList = recordTypeList;
     record: RecordBar = {
       amount: "",
@@ -53,6 +52,7 @@
       notes: "",
       type: "-",
     };
+
     created(): void {
       this.$store.commit("extractRecord");
     }
@@ -87,11 +87,17 @@
         flex-direction: column;
         justify-content: space-between;
     }
-    ::v-deep .money-tabs{
+
+    ::v-deep .money-tabs {
         @extend %innerShadow;
-        > li.selected{
-            background-color: rgba(0,0,0,0.1);
+
+        > li.selected {
+            background-color: rgba(0, 0, 0, 0.1);
         }
+    }
+
+    .money-hurdle{
+        justify-content: flex-end;
     }
 </style>
 
