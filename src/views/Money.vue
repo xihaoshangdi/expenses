@@ -15,6 +15,7 @@
         />
         <Tabs :tabs="recordTypeList"
               :value.sync="record.type"
+              class-prefix="money"
         ></Tabs>
         <Numberpad @update:save="onRecordSave" @update:value="onPadsUpdate"/>
 
@@ -42,7 +43,6 @@
   })
   export default class Money extends Vue {
     recordTypeList = recordTypeList;
-    timer: number | undefined;
     record: RecordBar = {
       amount: "",
       headline: "",
@@ -95,6 +95,9 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+    }
+    ::v-deep .money-tabs{
+        background-color: #F5EEC1;
     }
 </style>
 

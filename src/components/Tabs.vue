@@ -37,10 +37,11 @@
     .tabs{
         display: flex;
         text-align: center;
-        font-size: 24px;
+        font-size: inherit;
+        color: inherit;
         &-item{
             flex-grow: 1;
-            padding: 15px 0;
+            padding: 10px 0;
             position: relative;
             &.selected::after {
                 content: '';
@@ -48,8 +49,8 @@
                 bottom: 0;
                 left: 0;
                 width: 100%;
-                height: 4px;
-                background: #333;
+                height: 1px;
+                background: rgba(0,0,0,.3);
             }
         }
     }

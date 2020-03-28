@@ -41,21 +41,20 @@
 
 <style lang="scss" scoped>
     @import "~@/assets/styles/global.scss";
-    @import "~@/assets/styles/labels.scss";
 
     .labels {
-
-        background: $label-bg;
+        @extend %outerShadow;
         font-size: 16px;
         padding-left: 16px;
         .label {
+            color: $font-color;
             min-height: 45px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             padding-left: 10px;
             padding-right: 10px;
-            border-bottom: $label-hr;
+            border-bottom: black;
         }
     }
     .box{

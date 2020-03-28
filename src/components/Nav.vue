@@ -31,11 +31,14 @@
 </script>
 
 <style lang="scss" scoped>
+    @import "~@/assets/styles/global";
     nav{
+        @extend %outerShadow;
+        background-color: $nav-bg;
+        color: $nav-color;
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
-        box-shadow: 0 0 3px rgba(0,0,0,0.25);
         font-size: 14px;
         max-height: 56px;
         > .item{
@@ -47,7 +50,7 @@
             padding: 4px 0 4px 0  ;
         }
         > .item.selected{
-          color: #FF0000;
+          color: $nav-icon-selected;
         }
     }
 
