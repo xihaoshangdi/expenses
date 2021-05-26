@@ -2373,13 +2373,15 @@ browserify-zlib@^0.2.0:
     pako "~1.0.5"
 
 browserslist@^4.0.0, browserslist@^4.8.3, browserslist@^4.8.5, browserslist@^4.8.6, browserslist@^4.9.1:
-  version "4.9.1"
-  resolved "https://registry.yarnpkg.com/browserslist/-/browserslist-4.9.1.tgz#01ffb9ca31a1aef7678128fc6a2253316aa7287c"
-  integrity sha512-Q0DnKq20End3raFulq6Vfp1ecB9fh8yUNV55s8sekaDDeqBaCtWlRHCUdaWyUeSSBJM7IbM6HcsyaeYqgeDhnw==
+  version "4.16.6"
+  resolved "https://registry.yarnpkg.com/browserslist/-/browserslist-4.16.6.tgz#d7901277a5a88e554ed305b183ec9b0c08f66fa2"
+  integrity sha512-Wspk/PqO+4W9qp5iUTJsa1B/QrYn1keNCcEP5OvP7WBwT4KaDly0uONYmC6Xa3Z5IqnUgS0KcgLYu1l74x0ZXQ==
   dependencies:
-    caniuse-lite "^1.0.30001030"
-    electron-to-chromium "^1.3.363"
-    node-releases "^1.1.50"
+    caniuse-lite "^1.0.30001219"
+    colorette "^1.2.2"
+    electron-to-chromium "^1.3.723"
+    escalade "^3.1.1"
+    node-releases "^1.1.71"
 
 bs-logger@0.x:
   version "0.2.6"
@@ -2573,10 +2575,10 @@ caniuse-api@^3.0.0:
     lodash.memoize "^4.1.2"
     lodash.uniq "^4.5.0"
 
-caniuse-lite@^1.0.0, caniuse-lite@^1.0.30001020, caniuse-lite@^1.0.30001030:
-  version "1.0.30001035"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001035.tgz#2bb53b8aa4716b2ed08e088d4dc816a5fe089a1e"
-  integrity sha512-C1ZxgkuA4/bUEdMbU5WrGY4+UhMFFiXrgNAfxiMIqWgFTWfv/xsZCS2xEHT2LMq7xAZfuAnu6mcqyDl0ZR6wLQ==
+caniuse-lite@^1.0.0, caniuse-lite@^1.0.30001020, caniuse-lite@^1.0.30001219:
+  version "1.0.30001230"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001230.tgz#8135c57459854b2240b57a4a6786044bdc5a9f71"
+  integrity sha512-5yBd5nWCBS+jWKTcHOzXwo5xzcj4ePE/yjtkZyUV1BTUmrBaA9MRGC+e7mxnqXSA90CmCA8L3eKLaSUkt099IQ==
 
 capture-exit@^2.0.0:
   version "2.0.0"
@@ -2884,6 +2886,11 @@ color@^3.0.0:
   dependencies:
     color-convert "^1.9.1"
     color-string "^1.5.2"
+
+colorette@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/colorette/-/colorette-1.2.2.tgz#cbcc79d5e99caea2dbf10eb3a26fd8b3e6acfa94"
+  integrity sha512-MKGMzyfeuutC/ZJ1cba9NqcNpfeqMUcYmyF1ZFY6/Cn7CNSAKx6a+s48sqLqyAiZuaP2TcqMhoo+dlwFnVxT9w==
 
 combined-stream@^1.0.6, combined-stream@~1.0.6:
   version "1.0.8"
@@ -3391,7 +3398,7 @@ date-fns@^1.27.2:
 
 dayjs@^1.8.23:
   version "1.8.23"
-  resolved "http://r.cnpmjs.org/dayjs/download/dayjs-1.8.23.tgz#07b5a8e759c4d75ae07bdd0ad6977f851c01e510"
+  resolved "https://r.cnpmjs.org/dayjs/download/dayjs-1.8.23.tgz#07b5a8e759c4d75ae07bdd0ad6977f851c01e510"
   integrity sha1-B7Wo51nE11rge90K1pd/hRwB5RA=
 
 de-indent@^1.0.2:
@@ -3454,7 +3461,7 @@ deep-is@~0.1.3:
 
 deepmerge@1.3.2:
   version "1.3.2"
-  resolved "http://r.cnpmjs.org/deepmerge/download/deepmerge-1.3.2.tgz#1663691629d4dbfe364fa12a2a4f0aa86aa3a050"
+  resolved "https://r.cnpmjs.org/deepmerge/download/deepmerge-1.3.2.tgz#1663691629d4dbfe364fa12a2a4f0aa86aa3a050"
   integrity sha1-FmNpFinU2/42T6EqKk8KqGqjoFA=
 
 deepmerge@^1.5.2:
@@ -3689,7 +3696,7 @@ domhandler@^2.3.0:
 
 domready@1.0.8:
   version "1.0.8"
-  resolved "http://r.cnpmjs.org/domready/download/domready-1.0.8.tgz#91f252e597b65af77e745ae24dd0185d5e26d58c"
+  resolved "https://r.cnpmjs.org/domready/download/domready-1.0.8.tgz#91f252e597b65af77e745ae24dd0185d5e26d58c"
   integrity sha1-kfJS5Ze2Wvd+dFriTdAYXV4m1Yw=
 
 domutils@1.5.1:
@@ -3773,10 +3780,10 @@ ejs@^2.6.1:
   resolved "https://registry.yarnpkg.com/ejs/-/ejs-2.7.4.tgz#48661287573dcc53e366c7a1ae52c3a120eec9ba"
   integrity sha512-7vmuyh5+kuUyJKePhQfRQBhXV5Ce+RnaeeQArKu1EAMpL3WbgMt5WG6uQZpEVvYSSsxMXRKOewtDk9RaTKXRlA==
 
-electron-to-chromium@^1.3.363:
-  version "1.3.378"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.378.tgz#18c572cbb54bf5b2769855597cdc7511c02b481f"
-  integrity sha512-nBp/AfhaVIOnfwgL1CZxt80IcqWcyYXiX6v5gflAksxy+SzBVz7A7UWR1Nos92c9ofXW74V9PoapzRb0jJfYXw==
+electron-to-chromium@^1.3.723:
+  version "1.3.739"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.739.tgz#f07756aa92cabd5a6eec6f491525a64fe62f98b9"
+  integrity sha512-+LPJVRsN7hGZ9EIUUiWCpO7l4E3qBYHNadazlucBfsXBbccDFNKUBAgzE68FnkWGJPwD/AfKhSzL+G+Iqb8A4A==
 
 elegant-spinner@^1.0.1:
   version "1.0.1"
@@ -3893,6 +3900,11 @@ es-to-primitive@^1.2.1:
     is-callable "^1.1.4"
     is-date-object "^1.0.1"
     is-symbol "^1.0.2"
+
+escalade@^3.1.1:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/escalade/-/escalade-3.1.1.tgz#d8cfdc7000965c5a0174b4a82eaa5c0552742e40"
+  integrity sha512-k0er2gUkLf8O0zKJiAhmkTnJlTvINGv7ygDNPbeIsX/TJjGJZHuh9B2UxbsaEkmlEo9MfhrSzmhIlhRlI2GXnw==
 
 escape-html@~1.0.3:
   version "1.0.3"
@@ -4821,7 +4833,7 @@ has-ansi@^2.0.0:
 
 has-flag@^1.0.0:
   version "1.0.0"
-  resolved "http://r.cnpmjs.org/has-flag/download/has-flag-1.0.0.tgz#9d9e793165ce017a00f00418c43f942a7b1d11fa"
+  resolved "https://r.cnpmjs.org/has-flag/download/has-flag-1.0.0.tgz#9d9e793165ce017a00f00418c43f942a7b1d11fa"
   integrity sha1-nZ55MWXOAXoA8AQYxD+UKnsdEfo=
 
 has-flag@^3.0.0:
@@ -5143,7 +5155,7 @@ ignore@^5.1.1:
 
 image-size@^0.5.1:
   version "0.5.5"
-  resolved "http://r.cnpmjs.org/image-size/download/image-size-0.5.5.tgz#09dfd4ab9d20e29eb1c3e80b8990378df9e3cb9c"
+  resolved "https://r.cnpmjs.org/image-size/download/image-size-0.5.5.tgz#09dfd4ab9d20e29eb1c3e80b8990378df9e3cb9c"
   integrity sha1-Cd/Uq50g4p6xw+gLiZA3jfnjy5w=
 
 import-cwd@^2.0.0:
@@ -6108,7 +6120,7 @@ jest@^24.9.0:
 
 js-base64@^2.1.9:
   version "2.5.2"
-  resolved "http://r.cnpmjs.org/js-base64/download/js-base64-2.5.2.tgz#313b6274dda718f714d00b3330bbae6e38e90209"
+  resolved "https://r.cnpmjs.org/js-base64/download/js-base64-2.5.2.tgz#313b6274dda718f714d00b3330bbae6e38e90209"
   integrity sha1-MTtidN2nGPcU0AszMLuubjjpAgk=
 
 js-beautify@^1.6.12, js-beautify@^1.6.14:
@@ -6740,7 +6752,7 @@ merge-descriptors@1.0.1:
 
 merge-options@1.0.1:
   version "1.0.1"
-  resolved "http://r.cnpmjs.org/merge-options/download/merge-options-1.0.1.tgz#2a64b24457becd4e4dc608283247e94ce589aa32"
+  resolved "https://r.cnpmjs.org/merge-options/download/merge-options-1.0.1.tgz#2a64b24457becd4e4dc608283247e94ce589aa32"
   integrity sha1-KmSyRFe+zU5NxggoMkfpTOWJqjI=
   dependencies:
     is-plain-obj "^1.1"
@@ -6774,7 +6786,7 @@ microevent.ts@~0.1.1:
 
 micromatch@3.1.0:
   version "3.1.0"
-  resolved "http://r.cnpmjs.org/micromatch/download/micromatch-3.1.0.tgz#5102d4eaf20b6997d6008e3acfe1c44a3fa815e2"
+  resolved "https://r.cnpmjs.org/micromatch/download/micromatch-3.1.0.tgz#5102d4eaf20b6997d6008e3acfe1c44a3fa815e2"
   integrity sha1-UQLU6vILaZfWAI46z+HESj+oFeI=
   dependencies:
     arr-diff "^4.0.0"
@@ -6941,7 +6953,7 @@ mississippi@^3.0.0:
 
 mitt@1.1.2:
   version "1.1.2"
-  resolved "http://r.cnpmjs.org/mitt/download/mitt-1.1.2.tgz#380e61480d6a615b660f07abb60d51e0a4e4bed6"
+  resolved "https://r.cnpmjs.org/mitt/download/mitt-1.1.2.tgz#380e61480d6a615b660f07abb60d51e0a4e4bed6"
   integrity sha1-OA5hSA1qYVtmDwertg1R4KTkvtY=
 
 mixin-deep@^1.2.0:
@@ -7146,12 +7158,10 @@ node-notifier@^5.4.2:
     shellwords "^0.1.1"
     which "^1.3.0"
 
-node-releases@^1.1.50:
-  version "1.1.52"
-  resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-1.1.52.tgz#bcffee3e0a758e92e44ecfaecd0a47554b0bcba9"
-  integrity sha512-snSiT1UypkgGt2wxPqS6ImEUICbNCMb31yaxWrOLXjhlt2z2/IBpaOxzONExqSm4y5oLnAqjjRWu+wsDzK5yNQ==
-  dependencies:
-    semver "^6.3.0"
+node-releases@^1.1.71:
+  version "1.1.72"
+  resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-1.1.72.tgz#14802ab6b1039a79a0c7d662b610a5bbd76eacbe"
+  integrity sha512-LLUo+PpH3dU6XizX3iVoubUNheF/owjXCZZ5yACDxNnPtgFuludV1ZL3ayK1kVep42Rmm0+R9/Y60NQbZ2bifw==
 
 nopt@~4.0.1:
   version "4.0.3"
@@ -8058,7 +8068,7 @@ postcss-ordered-values@^4.1.2:
 
 postcss-prefix-selector@^1.6.0:
   version "1.7.2"
-  resolved "http://r.cnpmjs.org/postcss-prefix-selector/download/postcss-prefix-selector-1.7.2.tgz#3adeed903985734298f19d8f5e0b657f9d90d43c"
+  resolved "https://r.cnpmjs.org/postcss-prefix-selector/download/postcss-prefix-selector-1.7.2.tgz#3adeed903985734298f19d8f5e0b657f9d90d43c"
   integrity sha1-Ot7tkDmFc0KY8Z2PXgtlf52Q1Dw=
   dependencies:
     postcss "^7.0.0"
@@ -8132,7 +8142,7 @@ postcss-value-parser@^4.0.0, postcss-value-parser@^4.0.2:
 
 postcss@^5.2.17:
   version "5.2.18"
-  resolved "http://r.cnpmjs.org/postcss/download/postcss-5.2.18.tgz#badfa1497d46244f6390f58b319830d9107853c5"
+  resolved "https://r.cnpmjs.org/postcss/download/postcss-5.2.18.tgz#badfa1497d46244f6390f58b319830d9107853c5"
   integrity sha1-ut+hSX1GJE9jkPWLMZgw2RB4U8U=
   dependencies:
     chalk "^1.1.3"
@@ -8151,7 +8161,7 @@ postcss@^7.0.0, postcss@^7.0.1, postcss@^7.0.14, postcss@^7.0.16, postcss@^7.0.2
 
 posthtml-parser@^0.2.0, posthtml-parser@^0.2.1:
   version "0.2.1"
-  resolved "http://r.cnpmjs.org/posthtml-parser/download/posthtml-parser-0.2.1.tgz#35d530de386740c2ba24ff2eb2faf39ccdf271dd"
+  resolved "https://r.cnpmjs.org/posthtml-parser/download/posthtml-parser-0.2.1.tgz#35d530de386740c2ba24ff2eb2faf39ccdf271dd"
   integrity sha1-NdUw3jhnQMK6JP8usvrznM3ycd0=
   dependencies:
     htmlparser2 "^3.8.3"
@@ -8159,19 +8169,19 @@ posthtml-parser@^0.2.0, posthtml-parser@^0.2.1:
 
 posthtml-rename-id@^1.0:
   version "1.0.11"
-  resolved "http://r.cnpmjs.org/posthtml-rename-id/download/posthtml-rename-id-1.0.11.tgz#02281a1e4482aa3c8c30f798cf9a888e32d9275c"
+  resolved "https://r.cnpmjs.org/posthtml-rename-id/download/posthtml-rename-id-1.0.11.tgz#02281a1e4482aa3c8c30f798cf9a888e32d9275c"
   integrity sha1-AigaHkSCqjyMMPeYz5qIjjLZJ1w=
   dependencies:
     escape-string-regexp "1.0.5"
 
 posthtml-render@^1.0.5, posthtml-render@^1.0.6:
   version "1.2.0"
-  resolved "http://r.cnpmjs.org/posthtml-render/download/posthtml-render-1.2.0.tgz#3df0c800a8bbb95af583a94748520469477addf4"
+  resolved "https://r.cnpmjs.org/posthtml-render/download/posthtml-render-1.2.0.tgz#3df0c800a8bbb95af583a94748520469477addf4"
   integrity sha1-PfDIAKi7uVr1g6lHSFIEaUd63fQ=
 
 posthtml-svg-mode@^1.0.3:
   version "1.0.3"
-  resolved "http://r.cnpmjs.org/posthtml-svg-mode/download/posthtml-svg-mode-1.0.3.tgz#abd554face81223cab0cb367e18e4efd2a4e74b0"
+  resolved "https://r.cnpmjs.org/posthtml-svg-mode/download/posthtml-svg-mode-1.0.3.tgz#abd554face81223cab0cb367e18e4efd2a4e74b0"
   integrity sha1-q9VU+s6BIjyrDLNn4Y5O/SpOdLA=
   dependencies:
     merge-options "1.0.1"
@@ -8181,7 +8191,7 @@ posthtml-svg-mode@^1.0.3:
 
 posthtml@^0.9.2:
   version "0.9.2"
-  resolved "http://r.cnpmjs.org/posthtml/download/posthtml-0.9.2.tgz#f4c06db9f67b61fd17c4e256e7e3d9515bf726fd"
+  resolved "https://r.cnpmjs.org/posthtml/download/posthtml-0.9.2.tgz#f4c06db9f67b61fd17c4e256e7e3d9515bf726fd"
   integrity sha1-9MBtufZ7Yf0XxOJW5+PZUVv3Jv0=
   dependencies:
     posthtml-parser "^0.2.0"
@@ -9532,7 +9542,7 @@ supports-color@^2.0.0:
 
 supports-color@^3.2.3:
   version "3.2.3"
-  resolved "http://r.cnpmjs.org/supports-color/download/supports-color-3.2.3.tgz#65ac0504b3954171d8a64946b2ae3cbb8a5f54f6"
+  resolved "https://r.cnpmjs.org/supports-color/download/supports-color-3.2.3.tgz#65ac0504b3954171d8a64946b2ae3cbb8a5f54f6"
   integrity sha1-ZawFBLOVQXHYpklGsq48u4pfVPY=
   dependencies:
     has-flag "^1.0.0"
@@ -9560,7 +9570,7 @@ supports-color@^7.0.0, supports-color@^7.1.0:
 
 svg-baker-runtime@^1.4.3:
   version "1.4.3"
-  resolved "http://r.cnpmjs.org/svg-baker-runtime/download/svg-baker-runtime-1.4.3.tgz#8ec035daf3af4abe7e788120868ebbf84a34468f"
+  resolved "https://r.cnpmjs.org/svg-baker-runtime/download/svg-baker-runtime-1.4.3.tgz#8ec035daf3af4abe7e788120868ebbf84a34468f"
   integrity sha1-jsA12vOvSr5+eIEgho67+Eo0Ro8=
   dependencies:
     deepmerge "1.3.2"
@@ -9569,7 +9579,7 @@ svg-baker-runtime@^1.4.3:
 
 svg-baker@^1.5.0:
   version "1.5.0"
-  resolved "http://r.cnpmjs.org/svg-baker/download/svg-baker-1.5.0.tgz#e94e75523d9303e9a2b3448987080d966cb90af4"
+  resolved "https://r.cnpmjs.org/svg-baker/download/svg-baker-1.5.0.tgz#e94e75523d9303e9a2b3448987080d966cb90af4"
   integrity sha1-6U51Uj2TA+mis0SJhwgNlmy5CvQ=
   dependencies:
     bluebird "^3.5.0"
@@ -9588,7 +9598,7 @@ svg-baker@^1.5.0:
 
 svg-sprite-loader@^4.2.1:
   version "4.2.1"
-  resolved "http://r.cnpmjs.org/svg-sprite-loader/download/svg-sprite-loader-4.2.1.tgz#38a0bb9af9beecd037a0e417af56edf670fe7283"
+  resolved "https://r.cnpmjs.org/svg-sprite-loader/download/svg-sprite-loader-4.2.1.tgz#38a0bb9af9beecd037a0e417af56edf670fe7283"
   integrity sha1-OKC7mvm+7NA3oOQXr1bt9nD+coM=
   dependencies:
     bluebird "^3.5.0"
@@ -9608,7 +9618,7 @@ svg-tags@^1.0.0:
 
 svgo-loader@^2.2.1:
   version "2.2.1"
-  resolved "http://r.cnpmjs.org/svgo-loader/download/svgo-loader-2.2.1.tgz#ca1c9ad22e120bb45a5250233737da4d85521704"
+  resolved "https://r.cnpmjs.org/svgo-loader/download/svgo-loader-2.2.1.tgz#ca1c9ad22e120bb45a5250233737da4d85521704"
   integrity sha1-yhya0i4SC7RaUlAjNzfaTYVSFwQ=
   dependencies:
     js-yaml "^3.13.1"
@@ -9865,7 +9875,7 @@ tr46@^1.0.1:
 
 traverse@^0.6.6:
   version "0.6.6"
-  resolved "http://r.cnpmjs.org/traverse/download/traverse-0.6.6.tgz#cbdf560fd7b9af632502fed40f918c157ea97137"
+  resolved "https://r.cnpmjs.org/traverse/download/traverse-0.6.6.tgz#cbdf560fd7b9af632502fed40f918c157ea97137"
   integrity sha1-y99WD9e5r2MlAv7UD5GMFX6pcTc=
 
 tryer@^1.0.1:
@@ -10043,7 +10053,7 @@ unicode-property-aliases-ecmascript@^1.0.4:
 
 unidecode@0.1.8:
   version "0.1.8"
-  resolved "http://r.cnpmjs.org/unidecode/download/unidecode-0.1.8.tgz#efbb301538bc45246a9ac8c559d72f015305053e"
+  resolved "https://r.cnpmjs.org/unidecode/download/unidecode-0.1.8.tgz#efbb301538bc45246a9ac8c559d72f015305053e"
   integrity sha1-77swFTi8RSRqmsjFWdcvAVMFBT4=
 
 union-value@^1.0.0:
@@ -10144,7 +10154,7 @@ url-parse@^1.4.3:
 
 url-slug@2.0.0:
   version "2.0.0"
-  resolved "http://r.cnpmjs.org/url-slug/download/url-slug-2.0.0.tgz#a789d5aed4995c0d95af33377ad1d5c68d4d7027"
+  resolved "https://r.cnpmjs.org/url-slug/download/url-slug-2.0.0.tgz#a789d5aed4995c0d95af33377ad1d5c68d4d7027"
   integrity sha1-p4nVrtSZXA2VrzM3etHVxo1NcCc=
   dependencies:
     unidecode "0.1.8"
@@ -10270,7 +10280,7 @@ vue-eslint-parser@^7.0.0:
 
 vue-hash-calendar@^1.1.25:
   version "1.1.25"
-  resolved "http://r.cnpmjs.org/vue-hash-calendar/download/vue-hash-calendar-1.1.25.tgz#6f96c014d8e356cd2bcf876e5306943340d2bfc5"
+  resolved "https://r.cnpmjs.org/vue-hash-calendar/download/vue-hash-calendar-1.1.25.tgz#6f96c014d8e356cd2bcf876e5306943340d2bfc5"
   integrity sha1-b5bAFNjjVs0rz4duUwaUM0DSv8U=
   dependencies:
     vue "^2.5.17"
